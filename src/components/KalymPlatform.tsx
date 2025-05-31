@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -175,7 +174,7 @@ const KalymPlatform = () => {
         <Card id="contact" className="bg-white border-gray-200 shadow-lg">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-3xl font-bold text-black mb-4">
-              SUBMIT AI USE CASE
+              YOUR AI USE CASE
             </CardTitle>
             <CardDescription className="text-lg text-gray-600">
               Begin the KALYM.dev evaluation process with professional due diligence and KYC verification
