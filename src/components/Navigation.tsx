@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
 import { Brain } from 'lucide-react';
 
 const Navigation = () => {
@@ -11,7 +10,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-3">
             <Brain className="h-8 w-8 text-blue-600" />
             <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              KALYM.ai
+              KALYM.dev
             </span>
           </div>
           
@@ -23,9 +22,6 @@ const Navigation = () => {
             <a href="#state-of-ai" className="text-gray-700 hover:text-blue-600 transition-colors">State of AI</a>
             <a href="#team" className="text-gray-700 hover:text-blue-600 transition-colors">Team</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
-            <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full">
-              Get Started
-            </Button>
           </div>
         </div>
       </div>

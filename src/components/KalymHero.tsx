@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Shield, Globe } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Globe, Target, Search, CheckCircle } from 'lucide-react';
 
 const KalymHero = () => {
   return (
@@ -25,9 +25,65 @@ const KalymHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join the 12% who achieve AI success. KALYM.ai delivers 15-20% operational improvements 
+            Join the 12% who achieve AI success. KALYM.dev delivers 15-20% operational improvements 
             through elite data science and proven GCC market activation.
           </p>
+
+          {/* 3-Step Process Section */}
+          <div className="bg-gray-50 rounded-2xl p-8 mb-16 text-left max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                📋 SIMPLE 3-STEP PROCESS FOR KALYM.DEV
+              </h2>
+              <p className="text-xl text-gray-600">
+                Your AI Use Case, Market-Ready in 3 Simple Steps
+              </p>
+            </div>
+            
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Target className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">🎯 Step 1: Submit Your Vision</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Submit your AI Use Case through our streamlined portal. Whether it's predictive maintenance for your energy assets, dynamic pricing optimization, or government service automation—share your challenge and we'll assess its market potential and technical feasibility.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Search className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">🔍 Step 2: Quick Due Diligence</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    We'll connect within 72 hours for a focused due diligence session. Our experts evaluate your use case's commercial viability, technical requirements, and alignment with GCC market demands. This ensures we only move forward with solutions that deliver real value.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-black mb-2">✅ Step 3: Partnership Agreement</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    If the stars align, we'll send you our partnership agreement outlining revenue sharing, go-to-market strategy, and implementation timeline. Your AI innovation becomes a market-ready solution backed by our full orchestration capabilities—from technical development to regional distribution.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-8">
+              <p className="text-lg font-semibold text-black">
+                Ready to turn your AI idea into GCC market reality? Submit your use case today.
+              </p>
+            </div>
+          </div>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
@@ -35,7 +91,7 @@ const KalymHero = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button size="lg" variant="outline" className="border-gray-300 text-gray-700 hover:text-blue-600 hover:border-blue-600 px-8 py-4 text-lg rounded-full">
-              Explore Research
+              Download Our Paper
             </Button>
           </div>
           

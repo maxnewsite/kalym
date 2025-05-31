@@ -64,7 +64,7 @@ const KalymPlatform = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('KALYM Registration Submission:', formData);
+    console.log('KALYM.dev Registration Submission:', formData);
     
     toast({
       title: "Registration Submitted Successfully",
@@ -135,7 +135,7 @@ const KalymPlatform = () => {
               Submit Your AI Use Case
             </CardTitle>
             <CardDescription className="text-lg text-gray-600">
-              Begin the KALYM.ai evaluation process with professional due diligence and KYC verification
+              Begin the KALYM.dev evaluation process with professional due diligence and KYC verification
             </CardDescription>
           </CardHeader>
           
