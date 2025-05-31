@@ -18,6 +18,9 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#research" className="text-gray-300 hover:text-emerald-400 transition-colors">Research</a>
             <a href="#platform" className="text-gray-300 hover:text-emerald-400 transition-colors">Platform</a>
+            <a href="#ceo-imperative" className="text-gray-300 hover:text-emerald-400 transition-colors">CEO Guide</a>
+            <a href="#cio-guide" className="text-gray-300 hover:text-emerald-400 transition-colors">CIO Guide</a>
+            <a href="#state-of-ai" className="text-gray-300 hover:text-emerald-400 transition-colors">State of AI</a>
             <a href="#contact" className="text-gray-300 hover:text-emerald-400 transition-colors">Contact</a>
             <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white px-6 py-2 rounded-full">
               Get Started

@@ -4,6 +4,9 @@ import Navigation from '@/components/Navigation';
 import KalymHero from '@/components/KalymHero';
 import KalymResearch from '@/components/KalymResearch';
 import KalymPlatform from '@/components/KalymPlatform';
+import CEOImperative from '@/components/CEOImperative';
+import CIOGuide from '@/components/CIOGuide';
+import StateOfAI from '@/components/StateOfAI';
 
 const Index = () => {
   return (
@@ -14,6 +17,19 @@ const Index = () => {
         <KalymHero />
         <KalymResearch />
         <KalymPlatform />
+        
+        {/* Additional Research Sections */}
+        <section id="ceo-imperative">
+          <CEOImperative />
+        </section>
+        
+        <section id="cio-guide">
+          <CIOGuide />
+        </section>
+        
+        <section id="state-of-ai">
+          <StateOfAI />
+        </section>
       </main>
       
       <footer className="bg-black border-t border-gray-800 py-12">
