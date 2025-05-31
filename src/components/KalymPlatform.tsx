@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle, Factory, Search, Rocket, Target, Globe, BarChart3, ArrowRight } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const KalymPlatform = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +25,7 @@ const KalymPlatform = () => {
     currentStage: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const features = [
@@ -63,29 +65,69 @@ const KalymPlatform = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('KALYM.dev Registration Submission:', formData);
-    
-    toast({
-      title: "Registration Submitted Successfully",
-      description: "Your AI use case has been submitted for evaluation. Our team will contact you within 48 hours.",
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      companyName: '',
-      position: '',
-      industry: '',
-      useCaseTitle: '',
-      useCaseDescription: '',
-      targetMarket: '',
-      currentStage: ''
-    });
+    try {
+      const { error } = await supabase
+        .from('ai_use_case_submissions')
+        .insert([
+          {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            company_name: formData.companyName,
+            position: formData.position,
+            industry: formData.industry,
+            use_case_title: formData.useCaseTitle,
+            use_case_description: formData.useCaseDescription,
+            target_market: formData.targetMarket,
+            current_stage: formData.currentStage
+          }
+        ]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Submission Error",
+          description: "There was an error submitting your use case. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      toast({
+        title: "Thank You for Your Submission!",
+        description: "Your AI use case has been successfully submitted to KALYM.dev. Our expert team will review your submission and contact you within 72 hours to discuss the next steps in our evaluation process.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        companyName: '',
+        position: '',
+        industry: '',
+        useCaseTitle: '',
+        useCaseDescription: '',
+        targetMarket: '',
+        currentStage: ''
+      });
+
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an unexpected error. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -156,6 +198,7 @@ const KalymPlatform = () => {
                       value={formData.firstName}
                       onChange={(e) => handleInputChange('firstName', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -166,6 +209,7 @@ const KalymPlatform = () => {
                       value={formData.lastName}
                       onChange={(e) => handleInputChange('lastName', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -180,6 +224,7 @@ const KalymPlatform = () => {
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -191,6 +236,7 @@ const KalymPlatform = () => {
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -211,6 +257,7 @@ const KalymPlatform = () => {
                       value={formData.companyName}
                       onChange={(e) => handleInputChange('companyName', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -221,6 +268,7 @@ const KalymPlatform = () => {
                       value={formData.position}
                       onChange={(e) => handleInputChange('position', e.target.value)}
                       required
+                      disabled={isSubmitting}
                       className="bg-white border-gray-300 text-black focus:border-blue-500"
                     />
                   </div>
@@ -228,7 +276,7 @@ const KalymPlatform = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="industry" className="text-gray-700">Industry Sector *</Label>
-                  <Select value={formData.industry} onValueChange={(value) => handleInputChange('industry', value)}>
+                  <Select value={formData.industry} onValueChange={(value) => handleInputChange('industry', value)} disabled={isSubmitting}>
                     <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
                       <SelectValue placeholder="Select Industry" />
                     </SelectTrigger>
@@ -262,6 +310,7 @@ const KalymPlatform = () => {
                     value={formData.useCaseTitle}
                     onChange={(e) => handleInputChange('useCaseTitle', e.target.value)}
                     required
+                    disabled={isSubmitting}
                     placeholder="Brief, descriptive title for your AI solution"
                     className="bg-white border-gray-300 text-black focus:border-blue-500"
                   />
@@ -274,6 +323,7 @@ const KalymPlatform = () => {
                     value={formData.useCaseDescription}
                     onChange={(e) => handleInputChange('useCaseDescription', e.target.value)}
                     required
+                    disabled={isSubmitting}
                     placeholder="Describe your AI solution, problem it solves, and expected business impact"
                     className="bg-white border-gray-300 text-black focus:border-blue-500 min-h-[120px]"
                   />
@@ -282,7 +332,7 @@ const KalymPlatform = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="targetMarket" className="text-gray-700">Target Market *</Label>
-                    <Select value={formData.targetMarket} onValueChange={(value) => handleInputChange('targetMarket', value)}>
+                    <Select value={formData.targetMarket} onValueChange={(value) => handleInputChange('targetMarket', value)} disabled={isSubmitting}>
                       <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
                         <SelectValue placeholder="Select Target Market" />
                       </SelectTrigger>
@@ -300,7 +350,7 @@ const KalymPlatform = () => {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="currentStage" className="text-gray-700">Development Stage *</Label>
-                    <Select value={formData.currentStage} onValueChange={(value) => handleInputChange('currentStage', value)}>
+                    <Select value={formData.currentStage} onValueChange={(value) => handleInputChange('currentStage', value)} disabled={isSubmitting}>
                       <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
                         <SelectValue placeholder="Select Current Stage" />
                       </SelectTrigger>
@@ -321,14 +371,15 @@ const KalymPlatform = () => {
                 <Button 
                   type="submit"
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   <CheckCircle className="mr-2 h-5 w-5" />
-                  Submit for Evaluation
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  {isSubmitting ? 'Submitting...' : 'Submit for Evaluation'}
+                  {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
                 </Button>
                 <p className="text-sm text-gray-500 mt-4">
-                  Our team will review your submission and contact you within 48 hours
+                  Our team will review your submission and contact you within 72 hours
                 </p>
               </div>
             </form>

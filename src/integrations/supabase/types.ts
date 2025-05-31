@@ -9,7 +9,57 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      ai_use_case_submissions: {
+        Row: {
+          company_name: string
+          created_at: string
+          current_stage: string
+          email: string
+          first_name: string
+          id: string
+          industry: string
+          last_name: string
+          phone: string
+          position: string
+          target_market: string
+          updated_at: string
+          use_case_description: string
+          use_case_title: string
+        }
+        Insert: {
+          company_name: string
+          created_at?: string
+          current_stage: string
+          email: string
+          first_name: string
+          id?: string
+          industry: string
+          last_name: string
+          phone: string
+          position: string
+          target_market: string
+          updated_at?: string
+          use_case_description: string
+          use_case_title: string
+        }
+        Update: {
+          company_name?: string
+          created_at?: string
+          current_stage?: string
+          email?: string
+          first_name?: string
+          id?: string
+          industry?: string
+          last_name?: string
+          phone?: string
+          position?: string
+          target_market?: string
+          updated_at?: string
+          use_case_description?: string
+          use_case_title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
