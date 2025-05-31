@@ -70,11 +70,11 @@ const CIOGuide = () => {
   ];
 
   return (
-    <div className="py-32 px-6">
+    <div className="py-32 px-6 bg-black">
       <div className="container mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <span className="text-white">
               Strategic CIO's Guide to
             </span>
             <br />
@@ -82,7 +82,7 @@ const CIOGuide = () => {
               Generative AI Transformation
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-12">
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-12">
             Empowering CIOs with a roadmap for harnessing generative AI. Drive organization-wide value, agility, and competitive advantage with proven strategies and Microsoft's latest insights.
           </p>
           <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 px-6 py-2 text-lg">
@@ -90,7 +90,7 @@ const CIOGuide = () => {
           </Badge>
         </div>
 
-        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-blue-500/20 mb-20">
+        <Card className="bg-gray-900 border-gray-700 mb-20">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-3xl font-bold text-white mb-6">
               Lead with Vision: The CIO as AI Catalyst
@@ -115,7 +115,7 @@ const CIOGuide = () => {
           <h3 className="text-4xl font-bold text-center text-white mb-12">The AI Success Playbook</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {strategies.map((strategy, index) => (
-              <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+              <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
                 <CardHeader className="pb-4">
                   <div className="w-16 h-16 mb-4 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
                     {strategy.icon}
@@ -163,7 +163,7 @@ const CIOGuide = () => {
           <h3 className="text-3xl font-bold text-white mb-8">
             Is Your Organization Ready for the AI-First Future?
           </h3>
-          <p className="text-xl text-gray-400 mb-12">
+          <p className="text-xl text-gray-300 mb-12">
             The time to act is now. Partner with us to architect your AI transformation—securely, strategically, and at scale.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">

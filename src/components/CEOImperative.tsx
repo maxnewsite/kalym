@@ -34,11 +34,11 @@ const CEOImperative = () => {
   ];
 
   return (
-    <div className="py-32 px-6">
+    <div className="py-32 px-6 bg-black">
       <div className="container mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <span className="text-white">
               The CEO's AI
             </span>
             <br />
@@ -46,7 +46,7 @@ const CEOImperative = () => {
               Imperative
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
             Executive leadership in the age of AI transformation. Research-backed strategies for driving organization-wide AI adoption and competitive advantage.
           </p>
           <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 px-6 py-2 text-lg">
@@ -56,7 +56,7 @@ const CEOImperative = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {imperatives.map((imperative, index) => (
-            <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+            <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
               <CardHeader className="text-center pb-6">
                 <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
                   {imperative.icon}

@@ -82,11 +82,11 @@ const StateOfAI = () => {
   ];
 
   return (
-    <div className="py-32 px-6">
+    <div className="py-32 px-6 bg-black">
       <div className="container mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <span className="text-white">
               State of AI
             </span>
             <br />
@@ -94,7 +94,7 @@ const StateOfAI = () => {
               Global Report 2025
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-12">
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-12">
             Comprehensive analysis of AI adoption, challenges, and opportunities across industries and regions. Based on research from leading global institutions and 50,000+ organizations worldwide.
           </p>
           <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/20 px-6 py-2 text-lg">
@@ -104,12 +104,12 @@ const StateOfAI = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {globalTrends.map((trend, index) => (
-            <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+            <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
               <CardHeader className="text-center pb-6">
                 <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
                   {trend.icon}
                 </div>
-                <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <div className="text-5xl font-bold mb-4 text-white">
                   {trend.stat}
                 </div>
                 <CardTitle className="text-xl font-bold text-white leading-tight">
@@ -128,7 +128,7 @@ const StateOfAI = () => {
           ))}
         </div>
 
-        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-red-500/20 mb-20">
+        <Card className="bg-gray-900 border-gray-700 mb-20">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-4xl font-bold text-white mb-6">
               Top AI Adoption Barriers
@@ -156,7 +156,7 @@ const StateOfAI = () => {
           <h3 className="text-4xl font-bold text-center text-white mb-12">Critical Success Factors</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {successFactors.map((factor, index) => (
-              <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+              <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
                 <CardHeader className="text-center pb-6">
                   <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
                     {factor.icon}
@@ -202,7 +202,7 @@ const StateOfAI = () => {
           <h3 className="text-3xl font-bold text-white mb-8">
             Ready to Join the AI Leaders?
           </h3>
-          <p className="text-xl text-gray-400 mb-12">
+          <p className="text-xl text-gray-300 mb-12">
             Access the complete State of AI report with detailed insights, benchmarks, and actionable recommendations for your organization.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
