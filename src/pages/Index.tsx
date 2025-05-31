@@ -10,7 +10,7 @@ import StateOfAI from '@/components/StateOfAI';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-black">
       <Navigation />
       
       <main>
@@ -32,12 +32,12 @@ const Index = () => {
         </section>
       </main>
       
-      <footer className="bg-black border-t border-gray-800 py-12">
+      <footer className="bg-white border-t border-gray-200 py-12">
         <div className="container mx-auto px-6 text-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             KALYM.ai
           </div>
-          <p className="text-gray-400">AI Orchestration Platform for the GCC Region</p>
+          <p className="text-gray-600">AI Orchestration Platform for the GCC Region</p>
           <p className="text-gray-500 text-sm mt-2">Powered by elite data scientists and proven research</p>
         </div>
       </footer>
