@@ -25,7 +25,7 @@ const Manifesto = () => {
 
   const handleDownloadManifesto = () => {
     // Create a simple text version of the manifesto
-    const manifestoText = `KALYM.dev Manifesto
+    const manifestoText = `KALYM.org Manifesto
 
 Our manifesto is clear:
 
@@ -37,7 +37,7 @@ Our manifesto is clear:
 AI Orchestration Platform for the GCC Region
 Powered by elite data scientists and proven research
 
-Visit KALYM.dev for more information.`;
+Visit KALYM.org for more information.`;
 
     const blob = new Blob([manifestoText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);

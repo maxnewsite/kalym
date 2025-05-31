@@ -1,389 +1,219 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, Factory, Search, Rocket, Target, Globe, BarChart3, ArrowRight } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { Brain, Zap, Target, TrendingUp, Users, CheckCircle } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 const KalymPlatform = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    position: '',
-    industry: '',
-    useCaseTitle: '',
-    useCaseDescription: '',
-    targetMarket: '',
-    currentStage: ''
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [company, setCompany] = useState('');
+  const [useCase, setUseCase] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
-
-  const features = [
-    {
-      icon: <Factory className="h-8 w-8 text-blue-600" />,
-      title: "AI Factory Assessment",
-      description: "Elite data scientists evaluate your AI solution's technical viability, scalability potential, and market readiness."
-    },
-    {
-      icon: <Search className="h-8 w-8 text-green-600" />,
-      title: "KYC & Due Diligence",
-      description: "Professional vetting process including business model validation and regulatory compliance assessment."
-    },
-    {
-      icon: <Rocket className="h-8 w-8 text-purple-600" />,
-      title: "GCC Market Acceleration",
-      description: "Leverage regional expertise across UAE, Saudi Arabia, and Qatar markets with proven strategies."
-    },
-    {
-      icon: <Target className="h-8 w-8 text-orange-600" />,
-      title: "Strategic Integration",
-      description: "Business transformation consulting to ensure measurable ROI and enterprise alignment."
-    },
-    {
-      icon: <Globe className="h-8 w-8 text-indigo-600" />,
-      title: "Network & Distribution",
-      description: "Access to established enterprise clients, government entities, and strategic partners."
-    },
-    {
-      icon: <BarChart3 className="h-8 w-8 text-teal-600" />,
-      title: "Outcome-Based Results",
-      description: "Join the 12% who achieve AI success with 15-20% operational improvements."
-    }
-  ];
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+
+    if (!name || !email || !company || !useCase || !industry) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please fill in all fields."
+      });
+      return;
+    }
 
     try {
-      const { error } = await supabase
-        .from('ai_use_case_submissions')
+      const { data, error } = await supabase
+        .from('use_cases')
         .insert([
           {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.email,
-            phone: formData.phone,
-            company_name: formData.companyName,
-            position: formData.position,
-            industry: formData.industry,
-            use_case_title: formData.useCaseTitle,
-            use_case_description: formData.useCaseDescription,
-            target_market: formData.targetMarket,
-            current_stage: formData.currentStage
-          }
+            name: name,
+            email: email,
+            company: company,
+            use_case: useCase,
+            industry: industry,
+          },
         ]);
 
       if (error) {
-        console.error('Supabase error:', error);
+        console.error('Error submitting use case:', error);
         toast({
-          title: "Submission Error",
-          description: "There was an error submitting your use case. Please try again.",
           variant: "destructive",
+          title: "Error",
+          description: "Failed to submit use case. Please try again."
         });
-        return;
+      } else {
+        console.log('Use case submitted successfully:', data);
+        setSubmitted(true);
+        toast({
+          title: "Success",
+          description: "Your use case has been submitted successfully!",
+        });
+        // Clear form fields
+        setName('');
+        setEmail('');
+        setCompany('');
+        setUseCase('');
+        setIndustry('');
       }
-
-      toast({
-        title: "Thank You for Your Submission!",
-        description: "Your AI use case has been successfully submitted to KALYM.dev. Our expert team will review your submission and contact you within 72 hours to discuss the next steps in our evaluation process.",
-      });
-
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        companyName: '',
-        position: '',
-        industry: '',
-        useCaseTitle: '',
-        useCaseDescription: '',
-        targetMarket: '',
-        currentStage: ''
-      });
-
     } catch (error) {
-      console.error('Submission error:', error);
+      console.error('An unexpected error occurred:', error);
       toast({
-        title: "Submission Error",
-        description: "There was an unexpected error. Please try again later.",
         variant: "destructive",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later."
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="platform" className="py-32 px-6 bg-white">
+    <section id="contact" className="py-32 px-6 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="text-black">
-              AI Orchestration
-            </span>
+            <span className="text-black">Your AI</span>
             <br />
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Platform
+              Use Case
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Submit your AI use case for comprehensive evaluation and GCC market activation
+            Submit your AI vision and join the 12% who achieve measurable success. KALYM.org transforms your ideas into market-ready solutions.
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {features.map((feature, index) => (
-            <Card key={index} className="bg-white border-gray-200 hover:shadow-lg hover:border-blue-200 transition-all duration-300 transform hover:-translate-y-1">
-              <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center">
-                    {feature.icon}
-                  </div>
-                </div>
-                <CardTitle className="text-lg font-semibold text-black">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600 leading-relaxed text-sm">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Registration Form */}
-        <Card id="contact" className="bg-white border-gray-200 shadow-lg">
-          <CardHeader className="text-center pb-8">
-            <CardTitle className="text-3xl font-bold text-black mb-4">
-              YOUR AI USE CASE
-            </CardTitle>
-            <CardDescription className="text-lg text-gray-600">
-              Begin the KALYM.dev evaluation process with professional due diligence and KYC verification
-            </CardDescription>
-          </CardHeader>
-          
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-8">
-              {/* Contact Information */}
-              <div className="space-y-6">
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-xl font-semibold text-blue-600">Contact Information</h3>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-gray-700">First Name *</Label>
-                    <Input
-                      id="firstName"
-                      value={formData.firstName}
-                      onChange={(e) => handleInputChange('firstName', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-gray-700">Last Name *</Label>
-                    <Input
-                      id="lastName"
-                      value={formData.lastName}
-                      onChange={(e) => handleInputChange('lastName', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700">Email Address *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-gray-700">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Platform Showcase */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                <Brain className="h-8 w-8 text-blue-600" />
               </div>
-
-              {/* Organization Information */}
-              <div className="space-y-6">
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-xl font-semibold text-blue-600">Organization Information</h3>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="companyName" className="text-gray-700">Company Name *</Label>
-                    <Input
-                      id="companyName"
-                      value={formData.companyName}
-                      onChange={(e) => handleInputChange('companyName', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="position" className="text-gray-700">Position/Title *</Label>
-                    <Input
-                      id="position"
-                      value={formData.position}
-                      onChange={(e) => handleInputChange('position', e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white border-gray-300 text-black focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="industry" className="text-gray-700">Industry Sector *</Label>
-                  <Select value={formData.industry} onValueChange={(value) => handleInputChange('industry', value)} disabled={isSubmitting}>
-                    <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
-                      <SelectValue placeholder="Select Industry" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white border-gray-300">
-                      <SelectItem value="energy-utilities">Energy & Utilities</SelectItem>
-                      <SelectItem value="financial-services">Financial Services</SelectItem>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                      <SelectItem value="retail-ecommerce">Retail & E-commerce</SelectItem>
-                      <SelectItem value="government-public">Government & Public Sector</SelectItem>
-                      <SelectItem value="telecommunications">Telecommunications</SelectItem>
-                      <SelectItem value="transportation">Transportation & Logistics</SelectItem>
-                      <SelectItem value="real-estate">Real Estate</SelectItem>
-                      <SelectItem value="education">Education</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">AI Visionaries</h3>
+                <p className="text-gray-600">Share your transformative AI ideas.</p>
               </div>
+            </div>
 
-              {/* AI Use Case Information */}
-              <div className="space-y-6">
-                <div className="border-b border-gray-200 pb-4">
-                  <h3 className="text-xl font-semibold text-blue-600">AI Use Case Information</h3>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="useCaseTitle" className="text-gray-700">AI Use Case Title *</Label>
-                  <Input
-                    id="useCaseTitle"
-                    value={formData.useCaseTitle}
-                    onChange={(e) => handleInputChange('useCaseTitle', e.target.value)}
-                    required
-                    disabled={isSubmitting}
-                    placeholder="Brief, descriptive title for your AI solution"
-                    className="bg-white border-gray-300 text-black focus:border-blue-500"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="useCaseDescription" className="text-gray-700">Detailed Description *</Label>
-                  <Textarea
-                    id="useCaseDescription"
-                    value={formData.useCaseDescription}
-                    onChange={(e) => handleInputChange('useCaseDescription', e.target.value)}
-                    required
-                    disabled={isSubmitting}
-                    placeholder="Describe your AI solution, problem it solves, and expected business impact"
-                    className="bg-white border-gray-300 text-black focus:border-blue-500 min-h-[120px]"
-                  />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="targetMarket" className="text-gray-700">Target Market *</Label>
-                    <Select value={formData.targetMarket} onValueChange={(value) => handleInputChange('targetMarket', value)} disabled={isSubmitting}>
-                      <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
-                        <SelectValue placeholder="Select Target Market" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white border-gray-300">
-                        <SelectItem value="uae">UAE</SelectItem>
-                        <SelectItem value="saudi-arabia">Saudi Arabia</SelectItem>
-                        <SelectItem value="qatar">Qatar</SelectItem>
-                        <SelectItem value="kuwait">Kuwait</SelectItem>
-                        <SelectItem value="bahrain">Bahrain</SelectItem>
-                        <SelectItem value="oman">Oman</SelectItem>
-                        <SelectItem value="gcc-wide">GCC-Wide</SelectItem>
-                        <SelectItem value="global">Global with GCC focus</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="currentStage" className="text-gray-700">Development Stage *</Label>
-                    <Select value={formData.currentStage} onValueChange={(value) => handleInputChange('currentStage', value)} disabled={isSubmitting}>
-                      <SelectTrigger className="bg-white border-gray-300 text-black focus:border-blue-500">
-                        <SelectValue placeholder="Select Current Stage" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-white border-gray-300">
-                        <SelectItem value="concept">Concept/Ideation</SelectItem>
-                        <SelectItem value="prototype">Prototype Development</SelectItem>
-                        <SelectItem value="mvp">MVP/Beta Testing</SelectItem>
-                        <SelectItem value="production">Production Ready</SelectItem>
-                        <SelectItem value="deployed">Currently Deployed</SelectItem>
-                        <SelectItem value="scaling">Scaling/Expansion</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
+                <Zap className="h-8 w-8 text-purple-600" />
               </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">Elite Data Scientists</h3>
+                <p className="text-gray-600">80-100 experts evaluate technical viability.</p>
+              </div>
+            </div>
 
-              <div className="text-center pt-8">
-                <Button 
-                  type="submit"
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-                >
-                  <CheckCircle className="mr-2 h-5 w-5" />
-                  {isSubmitting ? 'Submitting...' : 'Submit for Evaluation'}
-                  {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5" />}
-                </Button>
-                <p className="text-sm text-gray-500 mt-4">
-                  Our team will review your submission and contact you within 72 hours
-                </p>
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+                <Target className="h-8 w-8 text-green-600" />
               </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">GCC Market Activation</h3>
+                <p className="text-gray-600">Solutions aligned with regional demands.</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
+                <TrendingUp className="h-8 w-8 text-orange-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">Measurable Success</h3>
+                <p className="text-gray-600">Achieve 15-20% operational improvements.</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                <Users className="h-8 w-8 text-red-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">Partnership</h3>
+                <p className="text-gray-600">Go-to-market strategy and implementation timeline.</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                <CheckCircle className="h-8 w-8 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-gray-900">KYC & Compliance</h3>
+                <p className="text-gray-600">Professional vetting with regulatory compliance aligned to GCC standards</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Submission Form */}
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <Input 
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div>
+                <Input 
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div>
+                <Input 
+                  type="text"
+                  placeholder="Company Name"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+              </div>
+              <div>
+                <Textarea
+                  placeholder="Describe your AI use case"
+                  rows={4}
+                  value={useCase}
+                  onChange={(e) => setUseCase(e.target.value)}
+                />
+              </div>
+              <div>
+                <Select onValueChange={(value) => setIndustry(value)}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Industry" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Energy">Energy</SelectItem>
+                    <SelectItem value="Finance">Finance</SelectItem>
+                    <SelectItem value="Healthcare">Healthcare</SelectItem>
+                    <SelectItem value="Government">Government</SelectItem>
+                    <SelectItem value="Retail">Retail</SelectItem>
+                    <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                Submit Use Case
+              </Button>
             </form>
-          </CardContent>
-        </Card>
+            {submitted && (
+              <div className="mt-4 text-green-600">
+                Thank you for your submission!
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

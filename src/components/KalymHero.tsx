@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Globe, Target, Search, CheckCircle } from 'lucide-react';
@@ -32,7 +31,7 @@ const KalymHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join the 12% who achieve AI success. KALYM.dev delivers 15-20% operational improvements 
+            Join the 12% who achieve AI success. KALYM.org delivers 15-20% operational improvements 
             through elite data science and proven GCC market activation.
           </p>
 
@@ -40,7 +39,7 @@ const KalymHero = () => {
           <div className="bg-gray-50 rounded-2xl p-8 mb-16 text-left max-w-4xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                📋 SIMPLE 3-STEP PROCESS FOR KALYM.DEV
+                📋 SIMPLE 3-STEP PROCESS FOR KALYM.ORG
               </h2>
               <p className="text-xl text-gray-600">
                 Your AI Use Case, Market-Ready in 3 Simple Steps
