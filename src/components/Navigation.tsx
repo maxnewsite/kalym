@@ -21,6 +21,7 @@ const Navigation = () => {
             <a href="#ceo-imperative" className="text-gray-700 hover:text-blue-600 transition-colors">CEO Guide</a>
             <a href="#cio-guide" className="text-gray-700 hover:text-blue-600 transition-colors">CIO Guide</a>
             <a href="#state-of-ai" className="text-gray-700 hover:text-blue-600 transition-colors">State of AI</a>
+            <a href="#team" className="text-gray-700 hover:text-blue-600 transition-colors">Team</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
             <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-full">
               Get Started

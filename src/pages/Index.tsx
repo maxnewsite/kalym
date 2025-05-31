@@ -7,6 +7,7 @@ import KalymPlatform from '@/components/KalymPlatform';
 import CEOImperative from '@/components/CEOImperative';
 import CIOGuide from '@/components/CIOGuide';
 import StateOfAI from '@/components/StateOfAI';
+import Team from '@/components/Team';
 
 const Index = () => {
   return (
@@ -29,6 +30,11 @@ const Index = () => {
         
         <section id="state-of-ai">
           <StateOfAI />
+        </section>
+
+        {/* Team Section */}
+        <section id="team">
+          <Team />
         </section>
       </main>
       
