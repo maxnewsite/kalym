@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,18 +9,24 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 const KalymPlatform = () => {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
+  const [useCaseTitle, setUseCaseTitle] = useState('');
   const [useCase, setUseCase] = useState('');
   const [industry, setIndustry] = useState('');
+  const [targetMarket, setTargetMarket] = useState('');
+  const [currentStage, setCurrentStage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!name || !email || !company || !useCase || !industry) {
+    if (!firstName || !lastName || !email || !phone || !company || !position || !useCaseTitle || !useCase || !industry || !targetMarket || !currentStage) {
       toast({
         variant: "destructive",
         title: "Error",
@@ -30,14 +37,20 @@ const KalymPlatform = () => {
 
     try {
       const { data, error } = await supabase
-        .from('use_cases')
+        .from('ai_use_case_submissions')
         .insert([
           {
-            name: name,
+            first_name: firstName,
+            last_name: lastName,
             email: email,
-            company: company,
-            use_case: useCase,
+            phone: phone,
+            company_name: company,
+            position: position,
+            use_case_title: useCaseTitle,
+            use_case_description: useCase,
             industry: industry,
+            target_market: targetMarket,
+            current_stage: currentStage,
           },
         ]);
 
@@ -56,11 +69,17 @@ const KalymPlatform = () => {
           description: "Your use case has been submitted successfully!",
         });
         // Clear form fields
-        setName('');
+        setFirstName('');
+        setLastName('');
         setEmail('');
+        setPhone('');
         setCompany('');
+        setPosition('');
+        setUseCaseTitle('');
         setUseCase('');
         setIndustry('');
+        setTargetMarket('');
+        setCurrentStage('');
       }
     } catch (error) {
       console.error('An unexpected error occurred:', error);
@@ -154,21 +173,35 @@ const KalymPlatform = () => {
 
           {/* Submission Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
                 <Input 
                   type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <Input 
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
               <div>
                 <Input 
                   type="email"
-                  placeholder="Your Email"
+                  placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div>
+                <Input 
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
               <div>
@@ -180,8 +213,24 @@ const KalymPlatform = () => {
                 />
               </div>
               <div>
+                <Input 
+                  type="text"
+                  placeholder="Position/Title"
+                  value={position}
+                  onChange={(e) => setPosition(e.target.value)}
+                />
+              </div>
+              <div>
+                <Input 
+                  type="text"
+                  placeholder="Use Case Title"
+                  value={useCaseTitle}
+                  onChange={(e) => setUseCaseTitle(e.target.value)}
+                />
+              </div>
+              <div>
                 <Textarea
-                  placeholder="Describe your AI use case"
+                  placeholder="Describe your AI use case in detail"
                   rows={4}
                   value={useCase}
                   onChange={(e) => setUseCase(e.target.value)}
@@ -199,7 +248,41 @@ const KalymPlatform = () => {
                     <SelectItem value="Government">Government</SelectItem>
                     <SelectItem value="Retail">Retail</SelectItem>
                     <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                    <SelectItem value="Technology">Technology</SelectItem>
+                    <SelectItem value="Education">Education</SelectItem>
                     <SelectItem value="Other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Select onValueChange={(value) => setTargetMarket(value)}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select Target Market" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="UAE">UAE</SelectItem>
+                    <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
+                    <SelectItem value="Qatar">Qatar</SelectItem>
+                    <SelectItem value="Kuwait">Kuwait</SelectItem>
+                    <SelectItem value="Bahrain">Bahrain</SelectItem>
+                    <SelectItem value="Oman">Oman</SelectItem>
+                    <SelectItem value="GCC-wide">GCC-wide</SelectItem>
+                    <SelectItem value="MENA">MENA</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Select onValueChange={(value) => setCurrentStage(value)}>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Current Stage" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Ideation">Ideation</SelectItem>
+                    <SelectItem value="Planning">Planning</SelectItem>
+                    <SelectItem value="Prototype">Prototype</SelectItem>
+                    <SelectItem value="Pilot">Pilot</SelectItem>
+                    <SelectItem value="Production">Production</SelectItem>
+                    <SelectItem value="Scaling">Scaling</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
