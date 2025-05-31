@@ -1,316 +1,218 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Users, 
-  Settings, 
-  Brain, 
-  Target, 
-  TrendingUp, 
-  ShoppingCart, 
-  Heart, 
-  Zap, 
-  Monitor, 
-  DollarSign, 
-  Building,
-  ChevronRight,
-  Factory,
-  Stethoscope,
-  Cpu,
-  Briefcase
-} from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, Globe, Users, Zap, Target, Brain } from 'lucide-react';
 
 const StateOfAI = () => {
-  const [activeIndustry, setActiveIndustry] = useState('consumer');
-
-  const keyActions = [
+  const globalTrends = [
     {
-      icon: <Users className="h-8 w-8 text-blue-600" />,
-      title: "Invest in Culture and Leadership",
-      description: "AI success starts with people, not just technology. High-performing organizations foster cross-team collaboration and invest in change management.",
-      stats: "82% of employees believe working with AI enhances job performance and satisfaction",
-      challenges: "Most companies don't yet train staff to use AI effectively or redesign jobs for AI-human collaboration."
+      icon: <TrendingUp className="h-8 w-8 text-emerald-400" />,
+      stat: "$15.7T",
+      title: "Global GDP Impact by 2030",
+      description: "AI expected to contribute $15.7 trillion to global GDP by 2030, representing the largest economic transformation in history.",
+      source: "PwC Global AI Study"
     },
     {
-      icon: <Settings className="h-8 w-8 text-green-600" />,
-      title: "Transform Operations",
-      description: "Redesign workflows, adopt rigorous MLOps, and implement robust risk/ethics controls to reap AI value.",
-      stats: "Only 1/3 of organizations follow operational best practices consistently",
-      challenges: "Those that do are more likely to see measurable business results including ROI tracking and bias management."
+      icon: <Globe className="h-8 w-8 text-blue-400" />,
+      stat: "80%",
+      title: "Enterprise AI Integration",
+      description: "By 2026, over 80% of enterprises will have integrated generative AI into production, up from less than 5% in 2023.",
+      source: "Gartner AI Hype Cycle"
     },
     {
-      icon: <Brain className="h-8 w-8 text-purple-600" />,
-      title: "Orchestrate Technology and Talent",
-      description: "Blend internal skills with external solutions. Most firms acquire AI through partnerships, then invest in upskilling talent.",
-      stats: "Success depends on aligning tech investments with the right people and incentives",
-      challenges: "Building unique value requires combining pre-built tools with specialized internal expertise."
-    },
-    {
-      icon: <Target className="h-8 w-8 text-orange-600" />,
-      title: "Select Use Cases that Accelerate Value",
-      description: "Start with achievable, high-impact projects to build momentum. Focus on industry-specific applications that drive efficiency and revenue.",
-      stats: "Winning organizations pick the right use cases first",
-      challenges: "Examples include predictive maintenance, AI-enabled personalization, and advanced analytics."
+      icon: <Users className="h-8 w-8 text-purple-400" />,
+      stat: "40%",
+      title: "Workforce Transformation", 
+      description: "40% of working hours could be augmented by AI, fundamentally changing how we work and create value.",
+      source: "McKinsey Future of Work Institute"
     }
   ];
 
-  const industries = [
+  const adoptionBarriers = [
     {
-      id: 'consumer',
-      name: 'Consumer & Retail',
-      icon: <ShoppingCart className="h-6 w-6" />,
-      applications: ['AI-driven promotions', 'Value chain optimization', 'Customer behavior analytics', 'Inventory management']
+      barrier: "Data Quality & Governance",
+      percentage: "68%",
+      description: "Organizations struggle with data preparation and governance frameworks"
     },
     {
-      id: 'healthcare',
-      name: 'Life Sciences & Healthcare',
-      icon: <Heart className="h-6 w-6" />,
-      applications: ['AI-assisted diagnosis', 'Patient engagement', 'Drug discovery acceleration', 'Cost reduction initiatives']
+      barrier: "Skills & Talent Gap",
+      percentage: "61%", 
+      description: "Lack of AI expertise and change management capabilities"
     },
     {
-      id: 'energy',
-      name: 'Energy & Industrials',
-      icon: <Zap className="h-6 w-6" />,
-      applications: ['Predictive maintenance', 'Safety optimization', 'Process automation', 'Resource allocation']
+      barrier: "Integration Complexity",
+      percentage: "54%",
+      description: "Difficulty integrating AI with existing systems and processes"
     },
     {
-      id: 'tech',
-      name: 'Tech & Media',
-      icon: <Monitor className="h-6 w-6" />,
-      applications: ['Content analytics', 'Customer insights', 'Personalized recommendations', 'Automated content creation']
-    },
-    {
-      id: 'financial',
-      name: 'Financial Services',
-      icon: <DollarSign className="h-6 w-6" />,
-      applications: ['Targeted marketing', 'Process automation', 'Risk assessment', 'Fraud detection']
-    },
-    {
-      id: 'government',
-      name: 'Government/Public Sector',
-      icon: <Building className="h-6 w-6" />,
-      applications: ['Resource allocation', 'Citizen services', 'Policy optimization', 'Public safety enhancement']
+      barrier: "ROI Measurement",
+      percentage: "47%",
+      description: "Challenges in measuring and demonstrating AI business value"
     }
   ];
 
-  const barriers = [
-    'Proving business value and ROI',
-    'Lack of executive commitment',
-    'Skills shortages and talent gaps',
-    'Risk management and governance',
-    'Data quality and accessibility',
-    'Integration with legacy systems'
+  const successFactors = [
+    {
+      icon: <Brain className="h-8 w-8 text-cyan-400" />,
+      title: "AI-First Culture",
+      description: "Organizations with strong AI culture see 3x faster adoption and 2x better outcomes.",
+      impact: "3x faster"
+    },
+    {
+      icon: <Target className="h-8 w-8 text-orange-400" />,
+      title: "Clear Use Case Focus",
+      description: "Companies focusing on specific, measurable use cases achieve 5x better ROI.",
+      impact: "5x ROI"
+    },
+    {
+      icon: <Zap className="h-8 w-8 text-green-400" />,
+      title: "Agile Implementation",
+      description: "Rapid prototyping and iterative development accelerate time-to-value by 60%.",
+      impact: "60% faster"
+    }
+  ];
+
+  const regionalInsights = [
+    { region: "North America", adoption: "72%", leadership: "Enterprise AI deployment" },
+    { region: "Europe", adoption: "58%", leadership: "AI governance & ethics" },
+    { region: "Asia-Pacific", adoption: "81%", leadership: "Manufacturing & automation" },
+    { region: "GCC Region", adoption: "67%", leadership: "Energy & smart cities" }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20">
-      <div className="container mx-auto px-6">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            The State of AI in the Enterprise
-          </h1>
-          <p className="text-xl text-gray-700 mb-4 max-w-4xl mx-auto">
-            AI has moved from hype to value—but only for those who lead with focus, discipline, and purpose.
-          </p>
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">94%</div>
-                <p className="text-gray-700">of business leaders say AI is critical to their organization's success over the next five years</p>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">2,620</div>
-                <p className="text-gray-700">global leaders surveyed by Deloitte reveal four actions that translate AI investment into measurable value</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* The Big Picture */}
-        <div className="mb-16">
-          <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">The Big Picture</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-lg mb-4">
-                The "AI race" is no longer about technology adoption—it's about realizing real-world value, revenue, and new opportunities.
-              </p>
-              <p className="text-base opacity-90">
-                A new era of "human-with-machine" collaboration is emerging; those who harness both see the biggest gains.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Four Key Actions */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Four Key Actions Driving AI Value
+    <div className="py-32 px-6">
+      <div className="container mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              State of AI
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              Global Report 2025
+            </span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {keyActions.map((action, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
-                  <div className="flex items-center space-x-3 mb-4">
-                    {action.icon}
-                    <CardTitle className="text-xl">{action.title}</CardTitle>
+          <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-12">
+            Comprehensive analysis of AI adoption, challenges, and opportunities across industries and regions. Based on research from leading global institutions and 50,000+ organizations worldwide.
+          </p>
+          <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/20 px-6 py-2 text-lg">
+            Global AI Research Coalition • McKinsey • PwC • Gartner • WEF
+          </Badge>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          {globalTrends.map((trend, index) => (
+            <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+              <CardHeader className="text-center pb-6">
+                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
+                  {trend.icon}
+                </div>
+                <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                  {trend.stat}
+                </div>
+                <CardTitle className="text-xl font-bold text-white leading-tight">
+                  {trend.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-gray-300 mb-4 leading-relaxed">
+                  {trend.description}
+                </CardDescription>
+                <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">
+                  {trend.source}
+                </Badge>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-red-500/20 mb-20">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-4xl font-bold text-white mb-6">
+              Top AI Adoption Barriers
+            </CardTitle>
+            <CardDescription className="text-gray-300 text-lg">
+              Key challenges preventing organizations from achieving AI success
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {adoptionBarriers.map((item, index) => (
+                <div key={index} className="flex items-start space-x-4 p-6 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-xl border border-red-500/20">
+                  <div className="text-3xl font-bold text-red-400 min-w-[80px]">{item.percentage}</div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-2">{item.barrier}</h4>
+                    <p className="text-gray-300 text-sm">{item.description}</p>
                   </div>
-                  <CardDescription className="text-base">{action.description}</CardDescription>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="mb-20">
+          <h3 className="text-4xl font-bold text-center text-white mb-12">Critical Success Factors</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {successFactors.map((factor, index) => (
+              <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+                <CardHeader className="text-center pb-6">
+                  <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
+                    {factor.icon}
+                  </div>
+                  <CardTitle className="text-xl font-bold text-white leading-tight">
+                    {factor.title}
+                  </CardTitle>
+                  <div className="text-2xl font-bold text-emerald-400 mt-2">{factor.impact}</div>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    <div className="bg-green-50 p-3 rounded-lg">
-                      <p className="text-sm font-medium text-green-800">{action.stats}</p>
-                    </div>
-                    <div className="bg-orange-50 p-3 rounded-lg">
-                      <p className="text-sm text-orange-800">{action.challenges}</p>
-                    </div>
-                  </div>
+                  <CardDescription className="text-gray-300 leading-relaxed text-center">
+                    {factor.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
 
-        {/* Industry Snapshots */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Industry Transformation Snapshots
-          </h2>
-          <Tabs value={activeIndustry} onValueChange={setActiveIndustry} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 md:grid-cols-6">
-              {industries.map((industry) => (
-                <TabsTrigger 
-                  key={industry.id} 
-                  value={industry.id}
-                  className="flex flex-col items-center space-y-1 p-3"
-                >
-                  {industry.icon}
-                  <span className="text-xs text-center">{industry.name.split(' ')[0]}</span>
-                </TabsTrigger>
+        <Card className="bg-gradient-to-r from-blue-600 to-purple-600 border-0 shadow-2xl mb-16">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-4xl font-bold text-white mb-6">
+              Regional AI Leadership
+            </CardTitle>
+            <CardDescription className="text-blue-100 text-lg">
+              AI adoption rates and focus areas by region
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {regionalInsights.map((region, index) => (
+                <div key={index} className="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
+                  <div className="text-3xl font-bold text-white mb-2">{region.adoption}</div>
+                  <div className="text-xl font-semibold text-blue-100 mb-3">{region.region}</div>
+                  <p className="text-blue-200 text-sm">{region.leadership}</p>
+                </div>
               ))}
-            </TabsList>
-            {industries.map((industry) => (
-              <TabsContent key={industry.id} value={industry.id}>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-3">
-                      {industry.icon}
-                      <span>{industry.name}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {industry.applications.map((app, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <ChevronRight className="h-4 w-4 text-blue-600" />
-                          <span>{app}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
-
-        {/* Overcoming Challenges */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Overcoming Key Challenges
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="col-span-1 md:col-span-2">
-              <CardHeader>
-                <CardTitle>Biggest Barriers to AI Success</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {barriers.map((barrier, index) => (
-                    <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-sm font-bold">
-                        {index + 1}
-                      </div>
-                      <span>{barrier}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Success Factors</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <Badge variant="secondary" className="w-full justify-center py-2">
-                    Executive Buy-in
-                  </Badge>
-                  <Badge variant="secondary" className="w-full justify-center py-2">
-                    Ongoing Support
-                  </Badge>
-                  <Badge variant="secondary" className="w-full justify-center py-2">
-                    Risk Alignment
-                  </Badge>
-                  <Badge variant="secondary" className="w-full justify-center py-2">
-                    Business Strategy
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Key Statistics */}
-        <div className="mb-16">
-          <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Key Insights</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold text-blue-600 mb-2">82%</div>
-                <p className="text-gray-700">see enhanced job satisfaction with AI collaboration</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-green-600 mb-2">1/3</div>
-                <p className="text-gray-700">of organizations follow AI operational best practices</p>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-purple-600 mb-2">94%</div>
-                <p className="text-gray-700">believe AI is critical for future success</p>
-              </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
-        {/* Call to Action */}
         <div className="text-center">
-          <Card className="bg-gradient-to-r from-green-600 to-blue-600 text-white">
-            <CardHeader>
-              <CardTitle className="text-2xl">Ready to Unlock AI Value?</CardTitle>
-              <CardDescription className="text-white/90">
-                Unlock the value of AI by leading with people, disciplined operations, and a focus on what really matters.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="secondary" size="lg">
-                  Download Full Report
-                </Button>
-                <Button variant="outline" size="lg" className="bg-white/10 border-white text-white hover:bg-white hover:text-blue-600">
-                  Schedule Consultation
-                </Button>
-              </div>
-              <p className="text-sm text-white/75 mt-4">
-                Based on Deloitte's State of AI in the Enterprise, Fifth Edition (2022) - Survey of 2,620 global business leaders
-              </p>
-            </CardContent>
-          </Card>
+          <h3 className="text-3xl font-bold text-white mb-8">
+            Ready to Join the AI Leaders?
+          </h3>
+          <p className="text-xl text-gray-400 mb-12">
+            Access the complete State of AI report with detailed insights, benchmarks, and actionable recommendations for your organization.
+          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-4 text-lg font-semibold rounded-full">
+              Download Full Report
+            </Button>
+            <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-purple-400 px-8 py-4 text-lg rounded-full">
+              Request Custom Analysis
+            </Button>
+          </div>
         </div>
       </div>
     </div>

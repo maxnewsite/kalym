@@ -1,280 +1,122 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TrendingUp, Target, Zap, Shield, DollarSign, Users, Building2, ArrowRight } from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, Users, Zap, Target, Shield, Globe } from 'lucide-react';
 
 const CEOImperative = () => {
-  const keyFindings = [
+  const imperatives = [
     {
-      stat: "88%",
-      description: "of executives believe AI will drive business model innovation",
-      icon: <Building2 className="h-6 w-6 text-blue-600" />
+      icon: <TrendingUp className="h-8 w-8 text-emerald-400" />,
+      title: "AI-First Strategy",
+      description: "Transform from AI-curious to AI-native. 73% of GCC CEOs believe GenAI will significantly change value creation in the next three years.",
+      actions: ["Define AI vision and strategy", "Allocate dedicated AI budget", "Form AI governance committee"]
     },
     {
-      stat: "30%",
-      description: "of organizations have successfully harnessed gen AI for hyper-personalization (expected to double by year-end)",
-      icon: <Target className="h-6 w-6 text-emerald-600" />
+      icon: <Users className="h-8 w-8 text-cyan-400" />,
+      title: "Workforce Evolution",
+      description: "Prepare your workforce for the AI-augmented future. 90% of frontier firms report more opportunities for meaningful work.",
+      actions: ["Implement AI training programs", "Redesign job roles", "Foster AI collaboration culture"]
     },
     {
-      stat: "63%",
-      description: "cite model cost as a top adoption barrier—yet those who optimize see outsized returns",
-      icon: <DollarSign className="h-6 w-6 text-orange-600" />
-    },
-    {
-      stat: "74%",
-      description: "revenue growth advantage for 'innovation outperformers' leveraging AI ecosystems",
-      icon: <TrendingUp className="h-6 w-6 text-purple-600" />
+      icon: <Zap className="h-8 w-8 text-purple-400" />,
+      title: "Operational Excellence",
+      description: "Achieve 15-20% operational improvements through systematic AI deployment across core business processes.",
+      actions: ["Identify high-impact use cases", "Pilot AI solutions", "Scale successful implementations"]
     }
   ];
 
+  const successMetrics = [
+    { metric: "94%", description: "of C-suite executives agree responsible AI produces greater ROI" },
+    { metric: "71%", description: "of employees at frontier firms say their company is thriving" },
+    { metric: "15-20%", description: "operational improvements achieved by AI leaders" }
+  ];
+
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="py-32 px-6">
       <div className="container mx-auto">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-6 text-sm font-medium">
-            IBM CEO Guide to Generative AI - Second Edition (2024)
-          </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-            Generative AI: The New Imperative for CEOs
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              The CEO's AI
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+              Imperative
+            </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-            The urgency is clear: Generative AI is pushing organizations to radically rethink business models and accelerate innovation. 
-            CEOs must lead the AI transformation now, aligning use cases with strategic objectives rather than exploring AI applications broadly.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+            Executive leadership in the age of AI transformation. Research-backed strategies for driving organization-wide AI adoption and competitive advantage.
           </p>
+          <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 px-6 py-2 text-lg">
+            WEF AI Leadership Toolkit • Fortune 500 Case Studies
+          </Badge>
         </div>
 
-        {/* Key Findings */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {keyFindings.map((finding, index) => (
-            <Card key={index} className="bg-white border-2 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-3">
-                  {finding.icon}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+          {imperatives.map((imperative, index) => (
+            <Card key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 border-emerald-500/20 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+              <CardHeader className="text-center pb-6">
+                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
+                  {imperative.icon}
                 </div>
-                <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
-                  {finding.stat}
-                </div>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <CardDescription className="text-slate-700 text-center leading-relaxed">
-                  {finding.description}
+                <CardTitle className="text-2xl font-bold text-white mb-4">
+                  {imperative.title}
+                </CardTitle>
+                <CardDescription className="text-gray-300 leading-relaxed text-base">
+                  {imperative.description}
                 </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <h4 className="text-emerald-400 font-semibold mb-4">Key Actions:</h4>
+                  {imperative.actions.map((action, actionIndex) => (
+                    <div key={actionIndex} className="flex items-start text-gray-300">
+                      <span className="text-emerald-400 mr-3 mt-1">•</span>
+                      <span>{action}</span>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Core Strategic Themes */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-          <h3 className="text-3xl font-bold mb-8 text-center text-slate-800">Strategic AI Implementation Framework</h3>
-          
-          <Tabs defaultValue="innovation" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 mb-8">
-              <TabsTrigger value="innovation">Business Model Innovation</TabsTrigger>
-              <TabsTrigger value="focus">Focus & Prioritization</TabsTrigger>
-              <TabsTrigger value="operations">AI-Driven Operations</TabsTrigger>
-              <TabsTrigger value="governance">Trust & Governance</TabsTrigger>
-              <TabsTrigger value="cost">Cost & Scale</TabsTrigger>
-              <TabsTrigger value="people">People & Ecosystems</TabsTrigger>
-            </TabsList>
+        <Card className="bg-gradient-to-r from-emerald-600 to-cyan-600 border-0 shadow-2xl mb-16">
+          <CardHeader className="text-center pb-8">
+            <CardTitle className="text-4xl font-bold text-white mb-6">
+              AI Leadership Success Metrics
+            </CardTitle>
+            <CardDescription className="text-emerald-100 text-lg">
+              Evidence from global research and frontier firms
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {successMetrics.map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-5xl font-bold text-white mb-4">{item.metric}</div>
+                  <p className="text-emerald-100 leading-relaxed">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-            <TabsContent value="innovation" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Building2 className="h-8 w-8 text-blue-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">Business Model Innovation</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    How gen AI enables new markets, faster product cycles, and operational reinvention.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-slate-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">New Data Access</h5>
-                      <p className="text-slate-600">Gen AI empowers access to previously untapped data sources for competitive advantage</p>
-                    </div>
-                    <div className="bg-slate-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">Rapid Insight Generation</h5>
-                      <p className="text-slate-600">Transform raw data into actionable business intelligence at unprecedented speed</p>
-                    </div>
-                    <div className="bg-slate-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">Market Entry Acceleration</h5>
-                      <p className="text-slate-600">Enter new markets faster with AI-powered market analysis and customer insights</p>
-                    </div>
-                    <div className="bg-slate-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">Product Development Speed</h5>
-                      <p className="text-slate-600">Accelerate product and service development cycles through AI-assisted innovation</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="focus" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-emerald-100 p-3 rounded-full">
-                  <Target className="h-8 w-8 text-emerald-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">Focus & Prioritization</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    Why CEOs must focus AI on their toughest problems, not chase every trend.
-                  </p>
-                  <div className="bg-emerald-50 p-6 rounded-lg border-l-4 border-emerald-500">
-                    <h5 className="font-semibold mb-3 text-slate-800">Strategic Success Formula</h5>
-                    <ul className="space-y-2 text-slate-600">
-                      <li>• Success depends on focusing AI on the organization's biggest challenges</li>
-                      <li>• Avoid spreading resources too thin across multiple AI initiatives</li>
-                      <li>• Select and scale high-value use cases for ROI and competitive differentiation</li>
-                      <li>• Align AI investments with core business objectives and strategic priorities</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="operations" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-purple-100 p-3 rounded-full">
-                  <Zap className="h-8 w-8 text-purple-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">AI-Driven Operations</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    Unlocking hyper-personalization, rapid ideation, and IT automation at scale.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">Hyper-Personalization</h5>
-                      <p className="text-slate-600">Deliver individualized experiences at scale through AI-powered customer insights</p>
-                    </div>
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">Rapid Ideation</h5>
-                      <p className="text-slate-600">Accelerate innovation cycles with AI-assisted brainstorming and concept development</p>
-                    </div>
-                    <div className="bg-purple-50 p-4 rounded-lg">
-                      <h5 className="font-semibold mb-2 text-slate-800">IT Automation</h5>
-                      <p className="text-slate-600">Break away from legacy constraints with AI-powered infrastructure and operations</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="governance" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-indigo-100 p-3 rounded-full">
-                  <Shield className="h-8 w-8 text-indigo-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">Trust, Governance & Data</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    Building platforms for responsible AI, ethical governance, and open innovation.
-                  </p>
-                  <div className="bg-indigo-50 p-6 rounded-lg">
-                    <h5 className="font-semibold mb-3 text-slate-800">Board-Level Priorities</h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <ul className="space-y-2 text-slate-600">
-                        <li>• Responsible AI implementation frameworks</li>
-                        <li>• Comprehensive data governance policies</li>
-                        <li>• Ecosystem collaboration strategies</li>
-                      </ul>
-                      <ul className="space-y-2 text-slate-600">
-                        <li>• Innovation and trust platform development</li>
-                        <li>• Internal and external data integration</li>
-                        <li>• Ethical AI decision-making processes</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="cost" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-orange-100 p-3 rounded-full">
-                  <DollarSign className="h-8 w-8 text-orange-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">Cost & Scale Management</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    Managing the compute surge—hybrid cloud, model selection, and FinOps discipline.
-                  </p>
-                  <div className="bg-orange-50 p-6 rounded-lg">
-                    <h5 className="font-semibold mb-3 text-slate-800">Strategic Cost Optimization</h5>
-                    <div className="space-y-3">
-                      <p className="text-slate-600">
-                        <strong>Compute Cost Management:</strong> CEOs must set cost guardrails and optimize hybrid cloud usage for AI workloads
-                      </p>
-                      <p className="text-slate-600">
-                        <strong>Model Selection Strategy:</strong> Balance large, general AI models with smaller, niche models for agility, cost control, and privacy
-                      </p>
-                      <p className="text-slate-600">
-                        <strong>Infrastructure Investment:</strong> Invest in fit-for-purpose AI models that deliver specific business outcomes
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="people" className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-cyan-100 p-3 rounded-full">
-                  <Users className="h-8 w-8 text-cyan-600" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-semibold mb-4 text-slate-800">People & Ecosystems</h4>
-                  <p className="text-lg text-slate-600 mb-4">
-                    Reskilling teams and leveraging partnerships for transformative results.
-                  </p>
-                  <div className="bg-cyan-50 p-6 rounded-lg">
-                    <h5 className="font-semibold mb-3 text-slate-800">Human-AI Collaboration Framework</h5>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h6 className="font-medium mb-2 text-slate-800">AI as Augmentation Tool</h6>
-                        <ul className="space-y-1 text-slate-600">
-                          <li>• AI augments, not replaces, human teams</li>
-                          <li>• Upskilling and reskilling are essential</li>
-                          <li>• Focus on human-AI collaboration models</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h6 className="font-medium mb-2 text-slate-800">Democratization Strategy</h6>
-                        <ul className="space-y-1 text-slate-600">
-                          <li>• Democratize access to AI across organization</li>
-                          <li>• Enable business and IT collaboration</li>
-                          <li>• Foster innovation through accessibility</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-
-        {/* Call to Action */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
-          <h3 className="text-3xl font-bold mb-4">Ready to Lead Your Industry with Generative AI?</h3>
-          <p className="text-xl mb-6 opacity-90">
-            Discover how our expertise can accelerate your AI transformation and deliver measurable business outcomes.
-          </p>
-          <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-6 text-lg">
-            Schedule Strategic Consultation
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-          <p className="text-sm mt-4 opacity-75">
-            Based on IBM's The CEO's Guide to Generative AI – Second Edition (2024) and proprietary surveys of 10,000+ global C-suite leaders
-          </p>
+        <div className="text-center">
+          <h3 className="text-3xl font-bold text-white mb-8">Ready to Lead the AI Revolution?</h3>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white px-8 py-4 text-lg font-semibold rounded-full">
+              Schedule CEO Strategy Session
+            </Button>
+            <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-emerald-400 px-8 py-4 text-lg rounded-full">
+              Download Executive Playbook
+            </Button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
