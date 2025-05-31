@@ -22,6 +22,7 @@ const Navigation = () => {
             <a href="#cio-guide" className="text-gray-700 hover:text-blue-600 transition-colors">CIO Guide</a>
             <a href="#state-of-ai" className="text-gray-700 hover:text-blue-600 transition-colors">State of AI</a>
             <a href="#team" className="text-gray-700 hover:text-blue-600 transition-colors">Team</a>
+            <a href="#white-papers" className="text-gray-700 hover:text-blue-600 transition-colors">White Papers</a>
             <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">Your AI Use Case</a>
           </div>
         </div>

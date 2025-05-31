@@ -9,6 +9,7 @@ import CEOImperative from '@/components/CEOImperative';
 import CIOGuide from '@/components/CIOGuide';
 import StateOfAI from '@/components/StateOfAI';
 import Team from '@/components/Team';
+import WhitePapers from '@/components/WhitePapers';
 
 const Index = () => {
   return (
@@ -37,6 +38,11 @@ const Index = () => {
         {/* Team Section */}
         <section id="team">
           <Team />
+        </section>
+
+        {/* White Papers Section */}
+        <section id="white-papers">
+          <WhitePapers />
         </section>
       </main>
       
