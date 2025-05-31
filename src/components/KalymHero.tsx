@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Globe, Target, Search, CheckCircle } from 'lucide-react';
 
 const KalymHero = () => {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="min-h-screen bg-white flex items-center justify-center relative overflow-hidden">
       {/* Subtle background elements */}
@@ -86,7 +93,11 @@ const KalymHero = () => {
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              onClick={scrollToContact}
+            >
               Submit Your AI Use Case
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

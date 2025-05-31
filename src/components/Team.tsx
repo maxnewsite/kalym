@@ -7,68 +7,68 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 const Team = () => {
   const teamMembers = [
     {
-      name: "Alessio Garofalo",
-      position: "CIO / CTO",
-      company: "Oxagon (Neom)",
-      location: "Saudi Arabia",
-      image: "/lovable-uploads/f025e4d9-5cc0-4cca-a4c5-bb651f8ff98e.png",
-      initials: "AG"
-    },
-    {
-      name: "Ali Abussaud",
-      position: "Founding Managing Partner",
-      company: "Hala Ventures",
-      location: "Saudi Arabia",
-      image: "/lovable-uploads/f025e4d9-5cc0-4cca-a4c5-bb651f8ff98e.png",
-      initials: "AA"
-    },
-    {
-      name: "Linda Rubin",
-      position: "CEO",
-      company: "Grover",
-      location: "Germany",
-      image: "/lovable-uploads/f025e4d9-5cc0-4cca-a4c5-bb651f8ff98e.png",
-      initials: "LR"
-    },
-    {
       name: "Massimiliano Masi",
-      position: "General Manager",
-      company: "Masakat Middle East",
+      position: "CEO/Founder",
+      company: "KALYM.dev",
       location: "United Arab Emirates",
-      image: "/lovable-uploads/f025e4d9-5cc0-4cca-a4c5-bb651f8ff98e.png",
+      image: "/placeholder.svg",
       initials: "MM"
     },
     {
-      name: "Dr. Sarah Al-Mutairi",
-      position: "Chief Data Scientist",
-      company: "KALYM.dev",
-      location: "Kuwait",
-      image: "/placeholder.svg",
-      initials: "SA"
-    },
-    {
-      name: "Ahmed Hassan",
-      position: "VP of Engineering",
-      company: "KALYM.dev",
-      location: "Egypt",
+      name: "Amira Al-Hassan",
+      position: "Chief Technology Officer",
+      company: "TechVision Solutions",
+      location: "Saudi Arabia",
       image: "/placeholder.svg",
       initials: "AH"
     },
     {
-      name: "Fatima Al-Zahra",
+      name: "Omar Khalil",
+      position: "VP of Data Science",
+      company: "DataCorp Analytics",
+      location: "Qatar",
+      image: "/placeholder.svg",
+      initials: "OK"
+    },
+    {
+      name: "Layla Rahman",
       position: "Head of AI Research",
-      company: "KALYM.dev",
-      location: "UAE",
+      company: "Innovation Labs",
+      location: "Kuwait",
+      image: "/placeholder.svg",
+      initials: "LR"
+    },
+    {
+      name: "Hassan Al-Mahmoud",
+      position: "Director of Engineering",
+      company: "CloudTech Systems",
+      location: "Bahrain",
+      image: "/placeholder.svg",
+      initials: "HM"
+    },
+    {
+      name: "Fatima Al-Zahra",
+      position: "Chief Strategy Officer",
+      company: "Strategic Ventures",
+      location: "Oman",
       image: "/placeholder.svg",
       initials: "FZ"
     },
     {
-      name: "Omar Khalil",
-      position: "Director of Strategy",
-      company: "KALYM.dev",
-      location: "Qatar",
+      name: "Ahmed Mansouri",
+      position: "VP of Business Development",
+      company: "GrowthPartners",
+      location: "United Arab Emirates",
       image: "/placeholder.svg",
-      initials: "OK"
+      initials: "AM"
+    },
+    {
+      name: "Nadia Al-Rashid",
+      position: "Head of Operations",
+      company: "OptiFlow Solutions",
+      location: "Saudi Arabia",
+      image: "/placeholder.svg",
+      initials: "NR"
     }
   ];
 
