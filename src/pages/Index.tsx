@@ -2,7 +2,7 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import KalymHero from '@/components/KalymHero';
-import KalymResearch from '@/components/KalymResearch';
+import KalymHome from '@/components/KalymHome';
 import KalymPlatform from '@/components/KalymPlatform';
 import CEOImperative from '@/components/CEOImperative';
 import CIOGuide from '@/components/CIOGuide';
@@ -15,7 +15,7 @@ const Index = () => {
       
       <main>
         <KalymHero />
-        <KalymResearch />
+        <KalymHome />
         <KalymPlatform />
         
         {/* Additional Research Sections */}

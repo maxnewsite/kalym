@@ -16,7 +16,7 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#research" className="text-gray-300 hover:text-emerald-400 transition-colors">Research</a>
+            <a href="#home" className="text-gray-300 hover:text-emerald-400 transition-colors">Home</a>
             <a href="#platform" className="text-gray-300 hover:text-emerald-400 transition-colors">Platform</a>
             <a href="#ceo-imperative" className="text-gray-300 hover:text-emerald-400 transition-colors">CEO Guide</a>
             <a href="#cio-guide" className="text-gray-300 hover:text-emerald-400 transition-colors">CIO Guide</a>
