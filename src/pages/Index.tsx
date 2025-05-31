@@ -8,6 +8,7 @@ import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ResearchClaims from '@/components/ResearchClaims';
 import CEOImperative from '@/components/CEOImperative';
+import StateOfAI from '@/components/StateOfAI';
 import AIAssessment from '@/components/AIAssessment';
 import IndustryShowcase from '@/components/IndustryShowcase';
 import AITrends from '@/components/AITrends';
@@ -34,6 +35,8 @@ const Index = () => {
         )}
         
         {activeSection === 'ceo-imperative' && <CEOImperative />}
+        
+        {activeSection === 'state-of-ai' && <StateOfAI />}
         
         {activeSection === 'assessment' && <AIAssessment />}
         

@@ -12,6 +12,7 @@ const Navigation = ({ activeSection, onSectionChange }: NavigationProps) => {
   const navItems = [
     { id: 'research', label: 'Research' },
     { id: 'ceo-imperative', label: 'CEO Guide' },
+    { id: 'state-of-ai', label: 'State of AI' },
     { id: 'assessment', label: 'Assessment' },
     { id: 'industries', label: 'Industries' },
     { id: 'trends', label: 'Trends' },
