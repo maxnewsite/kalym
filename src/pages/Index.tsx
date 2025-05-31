@@ -7,6 +7,7 @@ import { ChevronRight, Brain, TrendingUp, Users, Globe, Zap, Shield } from 'luci
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import ResearchClaims from '@/components/ResearchClaims';
+import CEOImperative from '@/components/CEOImperative';
 import AIAssessment from '@/components/AIAssessment';
 import IndustryShowcase from '@/components/IndustryShowcase';
 import AITrends from '@/components/AITrends';
@@ -31,6 +32,8 @@ const Index = () => {
             <ResearchClaims />
           </>
         )}
+        
+        {activeSection === 'ceo-imperative' && <CEOImperative />}
         
         {activeSection === 'assessment' && <AIAssessment />}
         
