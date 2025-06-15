@@ -1,8 +1,8 @@
 
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import KalymHero from '@/components/KalymHero';
 import KalymHome from '@/components/KalymHome';
+import KalymHero from '@/components/KalymHero';
 import Manifesto from '@/components/Manifesto';
 import KalymPlatform from '@/components/KalymPlatform';
 import CEOImperative from '@/components/CEOImperative';
@@ -49,10 +49,10 @@ const Index = () => {
       <footer className="bg-white border-t border-gray-100 py-20">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
               <div className="w-5 h-5 bg-white rounded-full"></div>
             </div>
-            <div className="text-3xl font-light text-black tracking-tight">
+            <div className="text-3xl font-light text-blue-600 tracking-tight">
               KALYM.org
             </div>
           </div>
