@@ -17,8 +17,8 @@ const Index = () => {
       <Navigation />
       
       <main>
-        <KalymHero />
         <KalymHome />
+        <KalymHero />
         <Manifesto />
         <KalymPlatform />
         
