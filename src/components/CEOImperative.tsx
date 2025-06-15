@@ -35,22 +35,22 @@ const CEOImperative = () => {
     <div className="py-32 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-black">
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-blue-600">
             CEO Guide
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
-            Executive leadership in the age of AI transformation. Research-backed strategies for driving organization-wide AI adoption and competitive advantage.
+            <span className="font-semibold text-black">Executive leadership in the age of AI transformation.</span> Research-backed strategies for driving organization-wide AI adoption and competitive advantage.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {imperatives.map((imperative, index) => (
-            <Card key={index} className="bg-gray-50 border-0 p-8 hover:shadow-lg transition-all duration-300">
+            <Card key={index} className="bg-blue-50 border border-blue-200 p-8 hover:shadow-lg hover:border-blue-300 transition-all duration-300">
               <CardHeader className="pb-6">
-                <div className="text-4xl font-extralight text-black mb-6">
+                <div className="text-4xl font-extralight text-blue-600 mb-6">
                   {imperative.number}
                 </div>
-                <CardTitle className="text-2xl font-light text-black mb-4">
+                <CardTitle className="text-2xl font-light text-blue-600 mb-4">
                   {imperative.title}
                 </CardTitle>
                 <p className="text-gray-600 font-light leading-relaxed">
@@ -61,7 +61,7 @@ const CEOImperative = () => {
                 <div className="space-y-3 pt-4">
                   {imperative.actions.map((action, actionIndex) => (
                     <div key={actionIndex} className="flex items-start text-gray-700">
-                      <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span className="font-light text-sm">{action}</span>
                     </div>
                   ))}
@@ -71,12 +71,12 @@ const CEOImperative = () => {
           ))}
         </div>
 
-        <Card className="bg-black border-0 p-12 mb-16">
+        <Card className="bg-blue-600 border-0 p-12 mb-16">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-4xl font-light text-white mb-6">
-              AI Leadership Success Metrics
+              <span className="font-semibold text-black">AI Leadership Success Metrics</span>
             </CardTitle>
-            <p className="text-gray-300 text-lg font-light">
+            <p className="text-blue-100 text-lg font-light">
               Evidence from global research and frontier firms
             </p>
           </CardHeader>
@@ -85,7 +85,7 @@ const CEOImperative = () => {
               {successMetrics.map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="text-5xl font-extralight text-white mb-4">{item.metric}</div>
-                  <p className="text-gray-300 font-light leading-relaxed">{item.description}</p>
+                  <p className="text-blue-100 font-light leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -93,12 +93,14 @@ const CEOImperative = () => {
         </Card>
 
         <div className="text-center">
-          <h3 className="text-3xl font-light text-black mb-8">Ready to Lead the AI Revolution?</h3>
+          <h3 className="text-3xl font-light text-blue-600 mb-8">
+            <span className="font-semibold text-black">Ready to Lead the AI Revolution?</span>
+          </h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-light">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-light">
               Schedule CEO Strategy Session
             </Button>
-            <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg font-light">
+            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-light">
               Download Executive Playbook
             </Button>
           </div>

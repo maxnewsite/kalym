@@ -38,21 +38,21 @@ Visit KALYM.org for more information.`;
   };
 
   return (
-    <section id="manifesto" className="py-32 px-6 bg-black">
+    <section id="manifesto" className="py-32 px-6 bg-blue-900">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-20">
           <h2 className="text-6xl md:text-7xl font-extralight mb-12 text-white">
             Manifesto
           </h2>
-          <p className="text-xl text-gray-300 font-light mb-16">
-            Our manifesto is clear:
+          <p className="text-xl text-blue-100 font-light mb-16">
+            <span className="font-semibold text-white">Our manifesto is clear:</span>
           </p>
         </div>
 
         <div className="space-y-8 mb-20">
           {manifestoPoints.map((point, index) => (
             <div key={index} className="flex items-center justify-center">
-              <div className="max-w-4xl w-full p-8 border border-gray-800 bg-gray-900/20 hover:bg-gray-900/40 transition-all duration-300">
+              <div className="max-w-4xl w-full p-8 border border-blue-700 bg-blue-800/20 hover:bg-blue-800/40 transition-all duration-300">
                 <div className="flex items-center space-x-6">
                   <div className="w-12 h-12 border border-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-light">{index + 1}</span>
@@ -70,7 +70,7 @@ Visit KALYM.org for more information.`;
           <Button 
             onClick={handleDownloadManifesto}
             variant="outline"
-            className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light bg-transparent"
+            className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-light bg-transparent"
           >
             <Download className="h-5 w-5 mr-3" />
             Download Full Manifesto

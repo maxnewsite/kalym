@@ -13,7 +13,7 @@ import WhitePapers from '@/components/WhitePapers';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-white text-gray-800">
       <Navigation />
       
       <main>
@@ -46,7 +46,7 @@ const Index = () => {
         </section>
       </main>
       
-      <footer className="bg-white border-t border-gray-100 py-20">
+      <footer className="bg-blue-50 border-t border-blue-200 py-20">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-4 mb-6">
             <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">

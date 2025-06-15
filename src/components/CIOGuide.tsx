@@ -68,35 +68,35 @@ const CIOGuide = () => {
   ];
 
   return (
-    <div className="py-32 px-6 bg-black">
+    <div className="py-32 px-6 bg-blue-900">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
           <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-white">
             CIO Guide
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed mb-12">
-            Strategic CIO's Guide to Generative AI Transformation. Empowering CIOs with a roadmap for harnessing generative AI to drive organization-wide value, agility, and competitive advantage.
+          <p className="text-xl text-blue-100 max-w-4xl mx-auto font-light leading-relaxed mb-12">
+            <span className="font-semibold text-white">Strategic CIO's Guide to Generative AI Transformation.</span> Empowering CIOs with a roadmap for harnessing generative AI to drive organization-wide value, agility, and competitive advantage.
           </p>
-          <div className="inline-block px-6 py-2 border border-gray-700 text-gray-300 text-sm font-light">
+          <div className="inline-block px-6 py-2 border border-blue-600 text-blue-100 text-sm font-light">
             Microsoft CIO Generative AI Playbook 2025 • 31,000+ Workers Survey
           </div>
         </div>
 
-        <Card className="bg-gray-900 border-gray-800 mb-20 p-8">
+        <Card className="bg-blue-800 border-blue-600 mb-20 p-8">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-3xl font-light text-white mb-6">
-              Lead with Vision: The CIO as AI Catalyst
+              <span className="font-semibold text-black">Lead with Vision:</span> The CIO as AI Catalyst
             </CardTitle>
-            <p className="text-gray-300 text-lg font-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-blue-100 text-lg font-light max-w-3xl mx-auto leading-relaxed">
               By 2026, over 80% of enterprises will have integrated generative AI into production—up from less than 5% in 2023. The CIO's role is pivotal in setting the AI roadmap and ensuring safe, scalable adoption.
             </p>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {frontierFirmStats.map((item, index) => (
-                <div key={index} className="text-center p-6 bg-gray-800/50 rounded">
+                <div key={index} className="text-center p-6 bg-blue-700/50 rounded">
                   <div className="text-4xl font-extralight text-white mb-3">{item.stat}</div>
-                  <p className="text-gray-300 font-light text-sm">{item.description}</p>
+                  <p className="text-blue-100 font-light text-sm">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -104,10 +104,12 @@ const CIOGuide = () => {
         </Card>
 
         <div className="mb-20">
-          <h3 className="text-4xl font-light text-center text-white mb-12">The AI Success Playbook</h3>
+          <h3 className="text-4xl font-light text-center text-white mb-12">
+            <span className="font-semibold text-black">The AI Success Playbook</span>
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {strategies.map((strategy, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 p-6 hover:bg-gray-800/50 transition-all duration-300">
+              <Card key={index} className="bg-blue-800 border-blue-600 p-6 hover:bg-blue-700/50 transition-all duration-300">
                 <CardHeader className="pb-4">
                   <div className="text-3xl font-extralight text-white mb-4">
                     {strategy.number}
@@ -117,10 +119,10 @@ const CIOGuide = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 mb-4 font-light text-sm leading-relaxed">
+                  <p className="text-blue-100 mb-4 font-light text-sm leading-relaxed">
                     {strategy.description}
                   </p>
-                  <div className="text-xs text-gray-400 font-light border-t border-gray-800 pt-3">
+                  <div className="text-xs text-blue-200 font-light border-t border-blue-700 pt-3">
                     {strategy.metric}
                   </div>
                 </CardContent>
@@ -131,8 +133,8 @@ const CIOGuide = () => {
 
         <Card className="bg-white border-0 p-12 mb-16">
           <CardHeader className="text-center pb-8">
-            <CardTitle className="text-4xl font-light text-black mb-6">
-              Real-World Success Stories
+            <CardTitle className="text-4xl font-light text-blue-600 mb-6">
+              <span className="font-semibold text-black">Real-World Success Stories</span>
             </CardTitle>
             <p className="text-gray-600 text-lg font-light">
               Leading organizations achieving measurable AI transformation results
@@ -141,8 +143,8 @@ const CIOGuide = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {caseStudies.map((study, index) => (
-                <div key={index} className="text-center p-6 bg-gray-50 rounded">
-                  <div className="text-3xl font-extralight text-black mb-2">{study.improvement}</div>
+                <div key={index} className="text-center p-6 bg-blue-50 rounded">
+                  <div className="text-3xl font-extralight text-blue-600 mb-2">{study.improvement}</div>
                   <div className="text-xl font-light text-black mb-3">{study.company}</div>
                   <p className="text-gray-600 text-sm font-light leading-relaxed">{study.description}</p>
                 </div>
@@ -153,16 +155,16 @@ const CIOGuide = () => {
 
         <div className="text-center">
           <h3 className="text-3xl font-light text-white mb-8">
-            Is Your Organization Ready for the AI-First Future?
+            <span className="font-semibold text-black">Is Your Organization Ready for the AI-First Future?</span>
           </h3>
-          <p className="text-xl text-gray-300 mb-12 font-light">
+          <p className="text-xl text-blue-100 mb-12 font-light">
             The time to act is now. Partner with us to architect your AI transformation—securely, strategically, and at scale.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button className="bg-white hover:bg-gray-100 text-black px-8 py-4 text-lg font-light">
+            <Button className="bg-white hover:bg-blue-50 text-blue-900 px-8 py-4 text-lg font-light">
               Book Strategy Session
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light bg-transparent">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-light bg-transparent">
               Download Full CIO Playbook
             </Button>
           </div>
