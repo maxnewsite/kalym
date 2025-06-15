@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Target, Search, CheckCircle } from 'lucide-react';
+import { ArrowRight, Target, Target as Search, Target as CheckCircle } from 'lucide-react';
 
 const KalymHero = () => {
   const scrollToContact = () => {
@@ -15,9 +15,9 @@ const KalymHero = () => {
     <section className="min-h-screen bg-white flex items-center justify-center relative">
       <div className="container mx-auto px-6 text-center relative z-10 pt-20 max-w-6xl">
         {/* Main Hero Content */}
-        <div className="mb-32">
+        <div className="mb-28">
           <h1 className="text-6xl md:text-8xl font-extralight mb-8 leading-tight tracking-tight">
-            <span className="text-black">
+            <span className="text-gray-800">
               KALYM
             </span>
             <br />
@@ -31,10 +31,10 @@ const KalymHero = () => {
             through elite data science and proven GCC market activation.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-20">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <Button 
               size="lg" 
-              className="bg-black hover:bg-gray-800 text-white px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
+              className="bg-gray-800 hover:bg-gray-700 text-white px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
               onClick={scrollToContact}
             >
               Submit Your AI Use Case
@@ -43,7 +43,7 @@ const KalymHero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-gray-300 text-gray-800 hover:bg-gray-50 px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
+              className="border-blue-300 text-blue-600 hover:bg-blue-50 px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
             >
               Download Research
             </Button>
@@ -51,12 +51,12 @@ const KalymHero = () => {
         </div>
 
         {/* 3-Step Process Section */}
-        <div className="bg-gray-50 p-16 mb-32 text-left">
-          <div className="text-center mb-16">
-            <div className="w-16 h-16 bg-black mx-auto mb-8 flex items-center justify-center">
+        <div className="bg-blue-50 p-12 mb-28 text-left rounded-lg">
+          <div className="text-center mb-12">
+            <div className="w-16 h-16 bg-blue-600 mx-auto mb-6 flex items-center justify-center rounded-full">
               <span className="text-white text-2xl">📋</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-extralight text-black mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-extralight text-gray-800 mb-6 tracking-tight">
               Simple 3-Step Process
             </h2>
             <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto">
@@ -64,14 +64,14 @@ const KalymHero = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
             <div className="text-center">
-              <div className="w-20 h-20 bg-black mx-auto mb-8 flex items-center justify-center">
+              <div className="w-20 h-20 bg-blue-600 mx-auto mb-6 flex items-center justify-center rounded-full">
                 <Target className="h-10 w-10 text-white" />
               </div>
-              <div className="mb-6">
-                <span className="text-3xl">🎯</span>
-                <h3 className="text-xl font-light text-black mt-4 mb-4">Submit Your Vision</h3>
+              <div className="mb-4">
+                <span className="text-2xl">🎯</span>
+                <h3 className="text-xl font-medium text-gray-800 mt-3 mb-3">Submit Your Vision</h3>
               </div>
               <p className="text-gray-600 font-light leading-relaxed text-sm">
                 Submit your AI Use Case through our streamlined portal. Whether it's predictive maintenance, 
@@ -80,12 +80,12 @@ const KalymHero = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-20 h-20 bg-black mx-auto mb-8 flex items-center justify-center">
+              <div className="w-20 h-20 bg-blue-600 mx-auto mb-6 flex items-center justify-center rounded-full">
                 <Search className="h-10 w-10 text-white" />
               </div>
-              <div className="mb-6">
-                <span className="text-3xl">🔍</span>
-                <h3 className="text-xl font-light text-black mt-4 mb-4">Quick Due Diligence</h3>
+              <div className="mb-4">
+                <span className="text-2xl">🔍</span>
+                <h3 className="text-xl font-medium text-gray-800 mt-3 mb-3">Quick Due Diligence</h3>
               </div>
               <p className="text-gray-600 font-light leading-relaxed text-sm">
                 We'll connect within 72 hours for focused due diligence. Our experts evaluate commercial viability, 
@@ -94,12 +94,12 @@ const KalymHero = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-20 h-20 bg-black mx-auto mb-8 flex items-center justify-center">
+              <div className="w-20 h-20 bg-blue-600 mx-auto mb-6 flex items-center justify-center rounded-full">
                 <CheckCircle className="h-10 w-10 text-white" />
               </div>
-              <div className="mb-6">
-                <span className="text-3xl">✅</span>
-                <h3 className="text-xl font-light text-black mt-4 mb-4">Partnership Agreement</h3>
+              <div className="mb-4">
+                <span className="text-2xl">✅</span>
+                <h3 className="text-xl font-medium text-gray-800 mt-3 mb-3">Partnership Agreement</h3>
               </div>
               <p className="text-gray-600 font-light leading-relaxed text-sm">
                 If aligned, we'll send our partnership agreement outlining revenue sharing, go-to-market strategy, 
@@ -108,40 +108,40 @@ const KalymHero = () => {
             </div>
           </div>
           
-          <div className="text-center mt-16">
-            <p className="text-lg font-light text-black">
+          <div className="text-center mt-12">
+            <p className="text-lg font-light text-gray-800">
               Ready to turn your AI idea into GCC market reality?
             </p>
           </div>
         </div>
         
         {/* Key Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
           <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-8 border border-gray-200 flex items-center justify-center">
+            <div className="w-20 h-20 mx-auto mb-6 border-2 border-blue-200 flex items-center justify-center rounded-full bg-blue-50">
               <span className="text-2xl">⚡</span>
             </div>
-            <h3 className="text-xl font-light text-black mb-4">Elite AI Factory</h3>
+            <h3 className="text-xl font-medium text-gray-800 mb-4">Elite AI Factory</h3>
             <p className="text-gray-600 font-light text-sm leading-relaxed">
               80-100 data scientists evaluate your solution's technical viability and market readiness
             </p>
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-8 border border-gray-200 flex items-center justify-center">
+            <div className="w-20 h-20 mx-auto mb-6 border-2 border-blue-200 flex items-center justify-center rounded-full bg-blue-50">
               <span className="text-2xl">🛡️</span>
             </div>
-            <h3 className="text-xl font-light text-black mb-4">KYC & Due Diligence</h3>
+            <h3 className="text-xl font-medium text-gray-800 mb-4">KYC & Due Diligence</h3>
             <p className="text-gray-600 font-light text-sm leading-relaxed">
               Professional vetting with regulatory compliance aligned to GCC standards
             </p>
           </div>
           
           <div className="text-center">
-            <div className="w-20 h-20 mx-auto mb-8 border border-gray-200 flex items-center justify-center">
+            <div className="w-20 h-20 mx-auto mb-6 border-2 border-blue-200 flex items-center justify-center rounded-full bg-blue-50">
               <span className="text-2xl">🌍</span>
             </div>
-            <h3 className="text-xl font-light text-black mb-4">GCC Acceleration</h3>
+            <h3 className="text-xl font-medium text-gray-800 mb-4">GCC Acceleration</h3>
             <p className="text-gray-600 font-light text-sm leading-relaxed">
               Regional expertise across UAE, Saudi Arabia, and Qatar markets
             </p>
