@@ -1,28 +1,26 @@
 
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Users, Zap, Target, Shield, Globe } from 'lucide-react';
 
 const CEOImperative = () => {
   const imperatives = [
     {
-      icon: <TrendingUp className="h-8 w-8 text-emerald-400" />,
+      number: "01",
       title: "AI-First Strategy",
-      description: "Transform from AI-curious to AI-native. 73% of GCC CEOs believe GenAI will significantly change value creation in the next three years.",
+      description: "73% of GCC CEOs believe GenAI will significantly change value creation in the next three years",
       actions: ["Define AI vision and strategy", "Allocate dedicated AI budget", "Form AI governance committee"]
     },
     {
-      icon: <Users className="h-8 w-8 text-cyan-400" />,
+      number: "02", 
       title: "Workforce Evolution",
-      description: "Prepare your workforce for the AI-augmented future. 90% of frontier firms report more opportunities for meaningful work.",
+      description: "90% of frontier firms report more opportunities for meaningful work with AI integration",
       actions: ["Implement AI training programs", "Redesign job roles", "Foster AI collaboration culture"]
     },
     {
-      icon: <Zap className="h-8 w-8 text-purple-400" />,
-      title: "Operational Excellence",
-      description: "Achieve 15-20% operational improvements through systematic AI deployment across core business processes.",
+      number: "03",
+      title: "Operational Excellence", 
+      description: "Achieve 15-20% operational improvements through systematic AI deployment",
       actions: ["Identify high-impact use cases", "Pilot AI solutions", "Scale successful implementations"]
     }
   ];
@@ -34,47 +32,37 @@ const CEOImperative = () => {
   ];
 
   return (
-    <div className="py-32 px-6 bg-black">
-      <div className="container mx-auto">
+    <div className="py-32 px-6 bg-white">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="text-white">
-              The CEO's AI
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Imperative
-            </span>
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-black">
+            CEO Guide
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
             Executive leadership in the age of AI transformation. Research-backed strategies for driving organization-wide AI adoption and competitive advantage.
           </p>
-          <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 px-6 py-2 text-lg">
-            WEF AI Leadership Toolkit • Fortune 500 Case Studies
-          </Badge>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {imperatives.map((imperative, index) => (
-            <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
-              <CardHeader className="text-center pb-6">
-                <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
-                  {imperative.icon}
+            <Card key={index} className="bg-gray-50 border-0 p-8 hover:shadow-lg transition-all duration-300">
+              <CardHeader className="pb-6">
+                <div className="text-4xl font-extralight text-black mb-6">
+                  {imperative.number}
                 </div>
-                <CardTitle className="text-2xl font-bold text-white mb-4">
+                <CardTitle className="text-2xl font-light text-black mb-4">
                   {imperative.title}
                 </CardTitle>
-                <CardDescription className="text-gray-300 leading-relaxed text-base">
+                <p className="text-gray-600 font-light leading-relaxed">
                   {imperative.description}
-                </CardDescription>
+                </p>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  <h4 className="text-emerald-400 font-semibold mb-4">Key Actions:</h4>
+                <div className="space-y-3 pt-4">
                   {imperative.actions.map((action, actionIndex) => (
-                    <div key={actionIndex} className="flex items-start text-gray-300">
-                      <span className="text-emerald-400 mr-3 mt-1">•</span>
-                      <span>{action}</span>
+                    <div key={actionIndex} className="flex items-start text-gray-700">
+                      <span className="w-2 h-2 bg-black rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="font-light text-sm">{action}</span>
                     </div>
                   ))}
                 </div>
@@ -83,21 +71,21 @@ const CEOImperative = () => {
           ))}
         </div>
 
-        <Card className="bg-gradient-to-r from-emerald-600 to-cyan-600 border-0 shadow-2xl mb-16">
+        <Card className="bg-black border-0 p-12 mb-16">
           <CardHeader className="text-center pb-8">
-            <CardTitle className="text-4xl font-bold text-white mb-6">
+            <CardTitle className="text-4xl font-light text-white mb-6">
               AI Leadership Success Metrics
             </CardTitle>
-            <CardDescription className="text-emerald-100 text-lg">
+            <p className="text-gray-300 text-lg font-light">
               Evidence from global research and frontier firms
-            </CardDescription>
+            </p>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {successMetrics.map((item, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-5xl font-bold text-white mb-4">{item.metric}</div>
-                  <p className="text-emerald-100 leading-relaxed">{item.description}</p>
+                  <div className="text-5xl font-extralight text-white mb-4">{item.metric}</div>
+                  <p className="text-gray-300 font-light leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -105,12 +93,12 @@ const CEOImperative = () => {
         </Card>
 
         <div className="text-center">
-          <h3 className="text-3xl font-bold text-white mb-8">Ready to Lead the AI Revolution?</h3>
+          <h3 className="text-3xl font-light text-black mb-8">Ready to Lead the AI Revolution?</h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white px-8 py-4 text-lg font-semibold rounded-full">
+            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-4 text-lg font-light">
               Schedule CEO Strategy Session
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-emerald-400 px-8 py-4 text-lg rounded-full">
+            <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 text-lg font-light">
               Download Executive Playbook
             </Button>
           </div>

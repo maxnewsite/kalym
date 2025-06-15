@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Brain, Zap, Target, TrendingUp, Users, CheckCircle } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -91,210 +90,262 @@ const KalymPlatform = () => {
     }
   };
 
+  const coreCapabilities = [
+    {
+      title: "Scheduling & Optimization",
+      description: "Asset and resource planning solutions that maximize operational efficiency"
+    },
+    {
+      title: "Dynamic Pricing", 
+      description: "Real-time market adjustments to optimize revenue and competitiveness"
+    },
+    {
+      title: "AI-Driven Personalization",
+      description: "Behavior-based experiences that increase engagement and conversion"
+    },
+    {
+      title: "Fraud Detection",
+      description: "Pattern recognition technology for enhanced financial protection"
+    },
+    {
+      title: "RFP Generation",
+      description: "Automated procurement processes that reduce administrative burden"
+    },
+    {
+      title: "Predictive Maintenance", 
+      description: "AI-powered equipment monitoring to prevent costly downtime"
+    },
+    {
+      title: "Supply Chain Intelligence",
+      description: "End-to-end logistics optimization for improved efficiency"
+    },
+    {
+      title: "Compliance Automation",
+      description: "Regulatory monitoring tailored specifically for GCC markets"
+    }
+  ];
+
+  const sandboxSolutions = [
+    "Secure, locally hosted, sovereign data storage and processing",
+    "Proven AI use cases with enterprise-grade models and built-in safeguards", 
+    "Continuous monitoring and transparency with explainable outputs",
+    "Quantifiable business impact tracking and ROI measurement"
+  ];
+
   return (
-    <section id="contact" className="py-32 px-6 bg-gray-50">
+    <section id="contact" className="py-32 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="text-black">Your AI</span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Use Case
-            </span>
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-black">
+            Platform
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Submit your AI vision and join the 12% who achieve measurable success. KALYM.org transforms your ideas into market-ready solutions.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
+            KALYM's 2025-2026 Offering focuses on eight core AI capabilities with quantified ROI
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Platform Showcase */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                <Brain className="h-8 w-8 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">AI Visionaries</h3>
-                <p className="text-gray-600">Share your transformative AI ideas.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center">
-                <Zap className="h-8 w-8 text-purple-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">Elite Data Scientists</h3>
-                <p className="text-gray-600">80-100 experts evaluate technical viability.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                <Target className="h-8 w-8 text-green-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">GCC Market Activation</h3>
-                <p className="text-gray-600">Solutions aligned with regional demands.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
-                <TrendingUp className="h-8 w-8 text-orange-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">Measurable Success</h3>
-                <p className="text-gray-600">Achieve 15-20% operational improvements.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
-                <Users className="h-8 w-8 text-red-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">Partnership</h3>
-                <p className="text-gray-600">Go-to-market strategy and implementation timeline.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-blue-600" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold text-gray-900">KYC & Compliance</h3>
-                <p className="text-gray-600">Professional vetting with regulatory compliance aligned to GCC standards</p>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+          <div>
+            <h3 className="text-3xl font-light text-black mb-12">Core AI Capabilities</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {coreCapabilities.map((capability, index) => (
+                <Card key={index} className="bg-gray-50 border-0 p-6 hover:shadow-md transition-all duration-300">
+                  <CardHeader className="pb-4">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
+                      <span className="text-white text-sm font-light">{index + 1}</span>
+                    </div>
+                    <CardTitle className="text-lg font-medium text-black">
+                      {capability.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 text-sm font-light leading-relaxed">
+                      {capability.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
 
-          {/* Submission Form */}
           <div>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <h3 className="text-3xl font-light text-black mb-12">The CIO's AI Adoption Dilemma</h3>
+            <Card className="bg-black border-0 p-8 mb-8">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-2xl font-light text-white mb-6">
+                  KALYM's Sandbox Solution
+                </CardTitle>
+                <p className="text-gray-300 font-light leading-relaxed">
+                  Addressing Critical Barriers Through the Sandbox Framework
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {sandboxSolutions.map((solution, index) => (
+                    <div key={index} className="flex items-start text-gray-300">
+                      <span className="w-2 h-2 bg-white rounded-full mt-2 mr-4 flex-shrink-0"></span>
+                      <span className="font-light text-sm leading-relaxed">{solution}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <h4 className="text-xl font-light text-black mb-6">Submit Your AI Use Case</h4>
+              
               <div className="grid grid-cols-2 gap-4">
                 <Input 
                   type="text"
                   placeholder="First Name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
+                  className="border-gray-300 font-light"
                 />
                 <Input 
                   type="text"
                   placeholder="Last Name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
+                  className="border-gray-300 font-light"
                 />
               </div>
-              <div>
-                <Input 
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <Input 
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div>
-                <Input 
-                  type="text"
-                  placeholder="Company Name"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
-                />
-              </div>
-              <div>
-                <Input 
-                  type="text"
-                  placeholder="Position/Title"
-                  value={position}
-                  onChange={(e) => setPosition(e.target.value)}
-                />
-              </div>
-              <div>
-                <Input 
-                  type="text"
-                  placeholder="Use Case Title"
-                  value={useCaseTitle}
-                  onChange={(e) => setUseCaseTitle(e.target.value)}
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder="Describe your AI use case in detail"
-                  rows={4}
-                  value={useCase}
-                  onChange={(e) => setUseCase(e.target.value)}
-                />
-              </div>
-              <div>
-                <Select onValueChange={(value) => setIndustry(value)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Industry" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Energy">Energy</SelectItem>
-                    <SelectItem value="Finance">Finance</SelectItem>
-                    <SelectItem value="Healthcare">Healthcare</SelectItem>
-                    <SelectItem value="Government">Government</SelectItem>
-                    <SelectItem value="Retail">Retail</SelectItem>
-                    <SelectItem value="Manufacturing">Manufacturing</SelectItem>
-                    <SelectItem value="Technology">Technology</SelectItem>
-                    <SelectItem value="Education">Education</SelectItem>
-                    <SelectItem value="Other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Select onValueChange={(value) => setTargetMarket(value)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select Target Market" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="UAE">UAE</SelectItem>
-                    <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
-                    <SelectItem value="Qatar">Qatar</SelectItem>
-                    <SelectItem value="Kuwait">Kuwait</SelectItem>
-                    <SelectItem value="Bahrain">Bahrain</SelectItem>
-                    <SelectItem value="Oman">Oman</SelectItem>
-                    <SelectItem value="GCC-wide">GCC-wide</SelectItem>
-                    <SelectItem value="MENA">MENA</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Select onValueChange={(value) => setCurrentStage(value)}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Current Stage" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Ideation">Ideation</SelectItem>
-                    <SelectItem value="Planning">Planning</SelectItem>
-                    <SelectItem value="Prototype">Prototype</SelectItem>
-                    <SelectItem value="Pilot">Pilot</SelectItem>
-                    <SelectItem value="Production">Production</SelectItem>
-                    <SelectItem value="Scaling">Scaling</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+              
+              <Input 
+                type="email"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Input 
+                type="tel"
+                placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Input 
+                type="text"
+                placeholder="Company Name"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Input 
+                type="text"
+                placeholder="Position/Title"
+                value={position}
+                onChange={(e) => setPosition(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Input 
+                type="text"
+                placeholder="Use Case Title"
+                value={useCaseTitle}
+                onChange={(e) => setUseCaseTitle(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Textarea
+                placeholder="Describe your AI use case in detail"
+                rows={4}
+                value={useCase}
+                onChange={(e) => setUseCase(e.target.value)}
+                className="border-gray-300 font-light"
+              />
+              
+              <Select onValueChange={(value) => setIndustry(value)}>
+                <SelectTrigger className="border-gray-300 font-light">
+                  <SelectValue placeholder="Select Industry" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Energy">Energy</SelectItem>
+                  <SelectItem value="Finance">Finance</SelectItem>
+                  <SelectItem value="Healthcare">Healthcare</SelectItem>
+                  <SelectItem value="Government">Government</SelectItem>
+                  <SelectItem value="Retail">Retail</SelectItem>
+                  <SelectItem value="Manufacturing">Manufacturing</SelectItem>
+                  <SelectItem value="Technology">Technology</SelectItem>
+                  <SelectItem value="Education">Education</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <Select onValueChange={(value) => setTargetMarket(value)}>
+                <SelectTrigger className="border-gray-300 font-light">
+                  <SelectValue placeholder="Select Target Market" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="UAE">UAE</SelectItem>
+                  <SelectItem value="Saudi Arabia">Saudi Arabia</SelectItem>
+                  <SelectItem value="Qatar">Qatar</SelectItem>
+                  <SelectItem value="Kuwait">Kuwait</SelectItem>
+                  <SelectItem value="Bahrain">Bahrain</SelectItem>
+                  <SelectItem value="Oman">Oman</SelectItem>
+                  <SelectItem value="GCC-wide">GCC-wide</SelectItem>
+                  <SelectItem value="MENA">MENA</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <Select onValueChange={(value) => setCurrentStage(value)}>
+                <SelectTrigger className="border-gray-300 font-light">
+                  <SelectValue placeholder="Current Stage" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Ideation">Ideation</SelectItem>
+                  <SelectItem value="Planning">Planning</SelectItem>
+                  <SelectItem value="Prototype">Prototype</SelectItem>
+                  <SelectItem value="Pilot">Pilot</SelectItem>
+                  <SelectItem value="Production">Production</SelectItem>
+                  <SelectItem value="Scaling">Scaling</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <Button className="w-full bg-black hover:bg-gray-800 text-white font-light py-3">
                 Submit Use Case
               </Button>
             </form>
+            
             {submitted && (
-              <div className="mt-4 text-green-600">
+              <div className="mt-6 p-4 bg-gray-50 text-black font-light">
                 Thank you for your submission!
               </div>
             )}
+          </div>
+        </div>
+
+        <div className="text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Card className="bg-gray-50 border-0 p-8">
+              <CardHeader>
+                <CardTitle className="text-xl font-light text-black mb-4">
+                  PUSH Model
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 font-light">
+                  Proactive opportunity development with proven AI use cases
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gray-50 border-0 p-8">
+              <CardHeader>
+                <CardTitle className="text-xl font-light text-black mb-4">
+                  PULL Model
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 font-light">
+                  Client-driven requirements with tailored AI solutions
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

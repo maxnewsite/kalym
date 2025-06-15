@@ -1,47 +1,45 @@
 
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Shield, Users, Zap, Target, Database, Bot } from 'lucide-react';
 
 const CIOGuide = () => {
   const strategies = [
     {
-      icon: <Target className="h-8 w-8 text-blue-400" />,
+      number: "01",
       title: "Partner for Cross-Functional AI Adoption",
       description: "Align C-suite and business units on shared AI vision with clear business KPIs",
-      metrics: "82% of leaders see 2025 as pivotal for AI operations rethink"
+      metric: "82% of leaders see 2025 as pivotal for AI operations rethink"
     },
     {
-      icon: <Database className="h-8 w-8 text-emerald-400" />,
-      title: "Build Solid Data & Governance Foundation", 
+      number: "02", 
+      title: "Build Solid Data & Governance Foundation",
       description: "Secure, accessible, governed data with proactive security and compliance",
-      metrics: "Essential before deploying tools like Microsoft 365 Copilot"
+      metric: "Essential before deploying tools like Microsoft 365 Copilot"
     },
     {
-      icon: <Users className="h-8 w-8 text-purple-400" />,
+      number: "03",
       title: "Enable All Employees with AI",
       description: "Make AI accessible for everyone through secure, enterprise-ready solutions",
-      metrics: "90% report more opportunities for meaningful work at frontier firms"
+      metric: "90% report more opportunities for meaningful work at frontier firms"
     },
     {
-      icon: <Zap className="h-8 w-8 text-orange-400" />,
-      title: "Prioritize High-Impact Workflows",
+      number: "04",
+      title: "Prioritize High-Impact Workflows", 
       description: "Select AI projects addressing core challenges with measurable results",
-      metrics: "Cross-functional AI council with clear ROI metrics"
+      metric: "Cross-functional AI council with clear ROI metrics"
     },
     {
-      icon: <Bot className="h-8 w-8 text-cyan-400" />,
+      number: "05",
       title: "Expand with Intelligent Agents",
       description: "Move from assistants to advanced AI agents that automate complex tasks",
-      metrics: "81% expect AI agents integration in next 12-18 months"
+      metric: "81% expect AI agents integration in next 12-18 months"
     },
     {
-      icon: <Shield className="h-8 w-8 text-red-400" />,
+      number: "06",
       title: "Measure What Matters",
-      description: "Track adoption and business impact using analytics and real-time adjustments",
-      metrics: "Combine behavioral and sentiment data for full success picture"
+      description: "Track adoption and business impact using analytics and real-time adjustments", 
+      metric: "Combine behavioral and sentiment data for full success picture"
     }
   ];
 
@@ -58,53 +56,47 @@ const CIOGuide = () => {
       description: "Employee Self-Service Agent improved IT satisfaction and HR response speed"
     },
     {
-      company: "Michelin",
-      improvement: "20% efficiency gain", 
+      company: "Michelin", 
+      improvement: "20% efficiency gain",
       description: "AI-powered predictive maintenance and supply chain optimization"
     },
     {
       company: "Access Holdings",
-      improvement: "15% cost reduction",
+      improvement: "15% cost reduction", 
       description: "AI-driven customer service and fraud detection systems"
     }
   ];
 
   return (
     <div className="py-32 px-6 bg-black">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="text-white">
-              Strategic CIO's Guide to
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Generative AI Transformation
-            </span>
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-white">
+            CIO Guide
           </h2>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-12">
-            Empowering CIOs with a roadmap for harnessing generative AI. Drive organization-wide value, agility, and competitive advantage with proven strategies and Microsoft's latest insights.
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto font-light leading-relaxed mb-12">
+            Strategic CIO's Guide to Generative AI Transformation. Empowering CIOs with a roadmap for harnessing generative AI to drive organization-wide value, agility, and competitive advantage.
           </p>
-          <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 px-6 py-2 text-lg">
+          <div className="inline-block px-6 py-2 border border-gray-700 text-gray-300 text-sm font-light">
             Microsoft CIO Generative AI Playbook 2025 • 31,000+ Workers Survey
-          </Badge>
+          </div>
         </div>
 
-        <Card className="bg-gray-900 border-gray-700 mb-20">
+        <Card className="bg-gray-900 border-gray-800 mb-20 p-8">
           <CardHeader className="text-center pb-8">
-            <CardTitle className="text-3xl font-bold text-white mb-6">
+            <CardTitle className="text-3xl font-light text-white mb-6">
               Lead with Vision: The CIO as AI Catalyst
             </CardTitle>
-            <CardDescription className="text-gray-300 text-lg max-w-3xl mx-auto">
+            <p className="text-gray-300 text-lg font-light max-w-3xl mx-auto leading-relaxed">
               By 2026, over 80% of enterprises will have integrated generative AI into production—up from less than 5% in 2023. The CIO's role is pivotal in setting the AI roadmap and ensuring safe, scalable adoption.
-            </CardDescription>
+            </p>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {frontierFirmStats.map((item, index) => (
-                <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
-                  <div className="text-4xl font-bold text-blue-400 mb-3">{item.stat}</div>
-                  <p className="text-gray-300">{item.description}</p>
+                <div key={index} className="text-center p-6 bg-gray-800/50 rounded">
+                  <div className="text-4xl font-extralight text-white mb-3">{item.stat}</div>
+                  <p className="text-gray-300 font-light text-sm">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -112,47 +104,47 @@ const CIOGuide = () => {
         </Card>
 
         <div className="mb-20">
-          <h3 className="text-4xl font-bold text-center text-white mb-12">The AI Success Playbook</h3>
+          <h3 className="text-4xl font-light text-center text-white mb-12">The AI Success Playbook</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {strategies.map((strategy, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-700 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500">
+              <Card key={index} className="bg-gray-900 border-gray-800 p-6 hover:bg-gray-800/50 transition-all duration-300">
                 <CardHeader className="pb-4">
-                  <div className="w-16 h-16 mb-4 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-full flex items-center justify-center">
-                    {strategy.icon}
+                  <div className="text-3xl font-extralight text-white mb-4">
+                    {strategy.number}
                   </div>
-                  <CardTitle className="text-xl font-bold text-white leading-tight">
+                  <CardTitle className="text-lg font-light text-white leading-tight mb-3">
                     {strategy.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-gray-300 mb-4 font-light text-sm leading-relaxed">
                     {strategy.description}
-                  </CardDescription>
-                  <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/20 text-xs">
-                    {strategy.metrics}
-                  </Badge>
+                  </p>
+                  <div className="text-xs text-gray-400 font-light border-t border-gray-800 pt-3">
+                    {strategy.metric}
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
 
-        <Card className="bg-gradient-to-r from-blue-600 to-purple-600 border-0 shadow-2xl mb-16">
+        <Card className="bg-white border-0 p-12 mb-16">
           <CardHeader className="text-center pb-8">
-            <CardTitle className="text-4xl font-bold text-white mb-6">
+            <CardTitle className="text-4xl font-light text-black mb-6">
               Real-World Success Stories
             </CardTitle>
-            <CardDescription className="text-blue-100 text-lg">
+            <p className="text-gray-600 text-lg font-light">
               Leading organizations achieving measurable AI transformation results
-            </CardDescription>
+            </p>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {caseStudies.map((study, index) => (
-                <div key={index} className="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
-                  <div className="text-3xl font-bold text-white mb-2">{study.improvement}</div>
-                  <div className="text-xl font-semibold text-blue-100 mb-3">{study.company}</div>
-                  <p className="text-blue-200 text-sm leading-relaxed">{study.description}</p>
+                <div key={index} className="text-center p-6 bg-gray-50 rounded">
+                  <div className="text-3xl font-extralight text-black mb-2">{study.improvement}</div>
+                  <div className="text-xl font-light text-black mb-3">{study.company}</div>
+                  <p className="text-gray-600 text-sm font-light leading-relaxed">{study.description}</p>
                 </div>
               ))}
             </div>
@@ -160,17 +152,17 @@ const CIOGuide = () => {
         </Card>
 
         <div className="text-center">
-          <h3 className="text-3xl font-bold text-white mb-8">
+          <h3 className="text-3xl font-light text-white mb-8">
             Is Your Organization Ready for the AI-First Future?
           </h3>
-          <p className="text-xl text-gray-300 mb-12">
+          <p className="text-xl text-gray-300 mb-12 font-light">
             The time to act is now. Partner with us to architect your AI transformation—securely, strategically, and at scale.
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 text-lg font-semibold rounded-full">
+            <Button className="bg-white hover:bg-gray-100 text-black px-8 py-4 text-lg font-light">
               Book Strategy Session
             </Button>
-            <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:text-white hover:border-blue-400 px-8 py-4 text-lg rounded-full">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light bg-transparent">
               Download Full CIO Playbook
             </Button>
           </div>
