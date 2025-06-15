@@ -18,11 +18,11 @@ const KalymHero = () => {
         <div className="mb-32">
           <h1 className="text-6xl md:text-8xl font-extralight mb-8 leading-tight tracking-tight">
             <span className="text-black">
-              AI Evolution
+              KALYM
             </span>
             <br />
             <span className="text-blue-600 font-light">
-              Orchestrated
+              AI Evolution Orchestrated
             </span>
           </h1>
           
