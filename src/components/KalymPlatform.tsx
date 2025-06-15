@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -152,7 +151,7 @@ const KalymPlatform = () => {
               {coreCapabilities.map((capability, index) => (
                 <Card key={index} className="bg-gray-50 border-0 p-6 hover:shadow-md transition-all duration-300">
                   <CardHeader className="pb-4">
-                    <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mb-4">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center mb-4">
                       <span className="text-white text-sm font-light">{index + 1}</span>
                     </div>
                     <CardTitle className="text-lg font-medium text-black">
@@ -171,19 +170,19 @@ const KalymPlatform = () => {
 
           <div>
             <h3 className="text-3xl font-light text-black mb-12">The CIO's AI Adoption Dilemma</h3>
-            <Card className="bg-blue-600 border-0 p-8 mb-8">
+            <Card className="bg-black border-0 p-8 mb-8">
               <CardHeader className="pb-6">
                 <CardTitle className="text-2xl font-light text-white mb-6">
                   KALYM's Sandbox Solution
                 </CardTitle>
-                <p className="text-blue-100 font-light leading-relaxed">
+                <p className="text-gray-300 font-light leading-relaxed">
                   Addressing Critical Barriers Through the Sandbox Framework
                 </p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {sandboxSolutions.map((solution, index) => (
-                    <div key={index} className="flex items-start text-blue-100">
+                    <div key={index} className="flex items-start text-gray-300">
                       <span className="w-2 h-2 bg-white rounded-full mt-2 mr-4 flex-shrink-0"></span>
                       <span className="font-light text-sm leading-relaxed">{solution}</span>
                     </div>
@@ -307,13 +306,13 @@ const KalymPlatform = () => {
                 </SelectContent>
               </Select>
               
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-light py-3">
+              <Button className="w-full bg-black hover:bg-gray-800 text-white font-light py-3">
                 Submit Use Case
               </Button>
             </form>
             
             {submitted && (
-              <div className="mt-6 p-4 bg-blue-50 text-blue-600 font-light">
+              <div className="mt-6 p-4 bg-gray-50 text-black font-light">
                 Thank you for your submission!
               </div>
             )}
