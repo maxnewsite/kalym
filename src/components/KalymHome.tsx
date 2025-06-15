@@ -61,9 +61,12 @@ const KalymHome = () => {
     <section id="home" className="py-32 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-light mb-8 text-black">
+          <h2 className="text-6xl md:text-7xl font-light mb-4 text-black">
             KALYM
           </h2>
+          <h3 className="text-4xl md:text-5xl font-extralight mb-8 text-gray-700 tracking-tight">
+            AI Evolution Orchestrated
+          </h3>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
             An Abu Dhabi-based AI Agency positioned at the center of the region's AI transformation. 
             We source, select, and deliver top tech providers, specializing in high-demand AI use cases tailored specifically for the GCC market.
