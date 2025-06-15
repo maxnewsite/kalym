@@ -72,39 +72,37 @@ const WhitePapers = () => {
 
   return (
     <section id="white-papers" className="py-32 px-6 bg-white">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              White Papers
-            </span>
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-black">
+            White Papers
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
             Essential research and frameworks from leading consulting firms and technology companies
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {whitePapers.map((paper, index) => (
             <a
               key={index}
               href={paper.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-gray-50 p-6 rounded-lg hover:bg-blue-50 hover:shadow-md transition-all duration-300 border border-gray-200"
+              className="group bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:border-gray-300 transition-all duration-300 p-6 block"
             >
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                  <div className="w-12 h-12 bg-white border border-gray-200 flex items-center justify-center group-hover:border-blue-500 transition-colors">
                     <FileText className="h-6 w-6 text-blue-600" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+                  <h3 className="text-base font-light text-gray-900 group-hover:text-blue-600 transition-colors mb-3 leading-relaxed">
                     {paper.title}
                   </h3>
                   <div className="flex items-center text-blue-600 group-hover:text-blue-700">
-                    <span className="text-sm font-medium">Read More</span>
+                    <span className="text-sm font-light">Read More</span>
                     <ExternalLink className="h-4 w-4 ml-2" />
                   </div>
                 </div>
