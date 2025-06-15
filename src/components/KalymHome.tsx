@@ -1,36 +1,36 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Zap, Target, Users, Shield } from 'lucide-react';
+import { Sparkles, Target, Crown, TrendingUp, MapPin } from 'lucide-react';
 
 const KalymHome = () => {
   const kalymPillars = [
     {
-      icon: <Brain className="h-12 w-12 text-black" />,
+      icon: <Sparkles className="h-14 w-14 text-black" />,
       letter: "K",
       title: "Knowledge",
       description: "Our selected AI Technology providers transform raw data into actionable intelligence & value through AI"
     },
     {
-      icon: <Target className="h-12 w-12 text-black" />,
+      icon: <Target className="h-14 w-14 text-black" />,
       letter: "A", 
       title: "Alignment",
       description: "We unite AI development, business consulting, and market activation into one convergent approach"
     },
     {
-      icon: <Users className="h-12 w-12 text-black" />,
+      icon: <Crown className="h-14 w-14 text-black" />,
       letter: "L",
       title: "Leadership", 
       description: "We support GCC organizations through complex AI transformations with a straightforward business model"
     },
     {
-      icon: <Zap className="h-12 w-12 text-black" />,
+      icon: <TrendingUp className="h-14 w-14 text-black" />,
       letter: "Y",
       title: "Yield",
       description: "Every AI investment delivers measurable returns through efficiency, growth, or competitive advantage"
     },
     {
-      icon: <Shield className="h-12 w-12 text-black" />,
+      icon: <MapPin className="h-14 w-14 text-black" />,
       letter: "M",
       title: "Middle East",
       description: "Built in the Middle East, for the Middle East. Local context, global-caliber results"
@@ -58,37 +58,37 @@ const KalymHome = () => {
   ];
 
   return (
-    <section id="home" className="py-32 px-6 bg-white">
+    <section id="home" className="py-36 px-8 bg-white">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-light mb-4 text-black">
+        <div className="text-center mb-24">
+          <h2 className="text-7xl md:text-8xl font-light mb-6 text-black tracking-tight">
             KALYM
           </h2>
-          <h3 className="text-4xl md:text-5xl font-extralight mb-8 text-gray-700 tracking-tight">
+          <h3 className="text-5xl md:text-6xl font-extralight mb-10 text-gray-700 tracking-tight leading-tight">
             AI Evolution Orchestrated
           </h3>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed">
+          <p className="text-2xl text-gray-600 max-w-5xl mx-auto font-light leading-relaxed">
             An Abu Dhabi-based AI Agency positioned at the center of the region's AI transformation. 
             We source, select, and deliver top tech providers, specializing in high-demand AI use cases tailored specifically for the GCC market.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-36">
           {kalymPillars.map((pillar, index) => (
-            <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg transition-all duration-300 text-center p-8">
-              <CardHeader className="pb-6">
-                <div className="w-20 h-20 mx-auto mb-6 bg-gray-50 rounded-full flex items-center justify-center">
+            <Card key={index} className="bg-white border border-gray-200 hover:shadow-2xl hover:border-gray-300 transition-all duration-500 text-center p-10 group">
+              <CardHeader className="pb-8">
+                <div className="w-24 h-24 mx-auto mb-8 bg-gray-50 rounded-full flex items-center justify-center group-hover:bg-gray-100 transition-colors duration-300">
                   {pillar.icon}
                 </div>
-                <div className="text-6xl font-extralight text-black mb-4">
+                <div className="text-7xl font-extralight text-black mb-6 tracking-tight">
                   {pillar.letter}
                 </div>
-                <CardTitle className="text-xl font-medium text-black">
+                <CardTitle className="text-2xl font-medium text-black leading-tight">
                   {pillar.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 text-sm leading-relaxed font-light">
+                <p className="text-gray-600 text-base leading-relaxed font-light">
                   {pillar.description}
                 </p>
               </CardContent>
@@ -96,24 +96,24 @@ const KalymHome = () => {
           ))}
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-20">
           {businessLines.map((line, index) => (
-            <Card key={index} className="bg-gray-50 border-0 p-12">
-              <CardHeader className="text-center pb-8">
-                <div className="text-2xl mb-4">🚀</div>
-                <CardTitle className="text-3xl font-light text-black mb-4">
+            <Card key={index} className="bg-gray-50 border-0 p-16 hover:bg-gray-100 transition-colors duration-300">
+              <CardHeader className="text-center pb-10">
+                <div className="text-3xl mb-6">🚀</div>
+                <CardTitle className="text-4xl font-light text-black mb-6 leading-tight">
                   Business Line {index + 1}: {line.title}
                 </CardTitle>
-                <p className="text-lg text-gray-600 font-light">
+                <p className="text-xl text-gray-600 font-light leading-relaxed max-w-4xl mx-auto">
                   {line.subtitle}
                 </p>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {line.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start text-gray-700">
-                      <span className="w-2 h-2 bg-black rounded-full mt-2 mr-4 flex-shrink-0"></span>
-                      <span className="font-light leading-relaxed">{feature}</span>
+                      <span className="w-3 h-3 bg-black rounded-full mt-2 mr-6 flex-shrink-0"></span>
+                      <span className="font-light leading-relaxed text-lg">{feature}</span>
                     </div>
                   ))}
                 </div>
