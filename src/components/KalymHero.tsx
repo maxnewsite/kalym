@@ -34,18 +34,11 @@ const KalymHero = () => {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
             <Button 
               size="lg" 
-              className="bg-gray-800 hover:bg-gray-700 text-white px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
               onClick={scrollToContact}
             >
               Submit Your AI Use Case
               <ArrowRight className="ml-3 h-5 w-5" />
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-blue-300 text-blue-600 hover:bg-blue-50 px-12 py-6 text-lg font-light rounded-none transition-all duration-300"
-            >
-              Download Research
             </Button>
           </div>
         </div>

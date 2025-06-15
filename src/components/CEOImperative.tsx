@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const CEOImperative = () => {
   const imperatives = [
@@ -74,7 +73,7 @@ const CEOImperative = () => {
         <Card className="bg-blue-600 border-0 p-12 mb-16">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-4xl font-light text-white mb-6">
-              <span className="font-semibold text-black">AI Leadership Success Metrics</span>
+              AI Leadership Success Metrics
             </CardTitle>
             <p className="text-blue-100 text-lg font-light">
               Evidence from global research and frontier firms
@@ -94,16 +93,11 @@ const CEOImperative = () => {
 
         <div className="text-center">
           <h3 className="text-3xl font-light text-blue-600 mb-8">
-            <span className="font-semibold text-black">Ready to Lead the AI Revolution?</span>
+            Ready to Lead the AI Revolution?
           </h3>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg font-light">
-              Schedule CEO Strategy Session
-            </Button>
-            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-light">
-              Download Executive Playbook
-            </Button>
-          </div>
+          <p className="text-lg text-gray-600 font-light leading-relaxed">
+            Transform your organization with proven AI strategies and expert guidance.
+          </p>
         </div>
       </div>
     </div>

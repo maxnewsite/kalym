@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { TrendingUp, Globe, Users } from 'lucide-react';
 
 const StateOfAI = () => {
@@ -71,43 +70,43 @@ const StateOfAI = () => {
   ];
 
   return (
-    <div className="py-32 px-6 bg-black">
+    <div className="py-32 px-6 bg-blue-600">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-20">
           <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-white">
             State of AI
           </h2>
-          <h3 className="text-4xl font-light text-blue-500 mb-8">
+          <h3 className="text-4xl font-light text-blue-100 mb-8">
             Global Report 2025
           </h3>
-          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+          <p className="text-lg text-blue-100 max-w-4xl mx-auto font-light leading-relaxed mb-8">
             Comprehensive analysis of AI adoption, challenges, and opportunities across industries and regions. Based on research from leading global institutions and 50,000+ organizations worldwide.
           </p>
-          <div className="inline-block px-8 py-3 border border-blue-500 text-blue-500 text-sm font-light rounded-full">
+          <div className="inline-block px-8 py-3 border border-blue-300 text-blue-100 text-sm font-light rounded-full">
             Global AI Research Coalition • McKinsey • PwC • Gartner • WEF
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {globalTrends.map((trend, index) => (
-            <Card key={index} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300">
+            <Card key={index} className="bg-white border-blue-200 hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center pb-6">
-                <div className="w-16 h-16 mx-auto mb-6 bg-gray-800 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-blue-600 rounded-full flex items-center justify-center">
                   {trend.icon}
                 </div>
-                <div className="text-5xl font-extralight mb-4 text-white">
+                <div className="text-5xl font-extralight mb-4 text-blue-600">
                   {trend.stat}
                 </div>
-                <CardTitle className="text-lg font-light text-white leading-tight">
+                <CardTitle className="text-lg font-light text-gray-800 leading-tight">
                   {trend.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-300 mb-4 font-light leading-relaxed text-center">
+                <CardDescription className="text-gray-600 mb-4 font-light leading-relaxed text-center">
                   {trend.description}
                 </CardDescription>
                 <div className="text-center">
-                  <span className="inline-block px-3 py-1 bg-gray-800 text-gray-400 text-xs font-light rounded">
+                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-light rounded">
                     {trend.source}
                   </span>
                 </div>
@@ -118,16 +117,16 @@ const StateOfAI = () => {
 
         <div className="mb-20">
           <h3 className="text-4xl font-light text-center text-white mb-12">Top AI Adoption Barriers</h3>
-          <p className="text-center text-gray-300 mb-12 font-light">
+          <p className="text-center text-blue-100 mb-12 font-light">
             Key challenges preventing organizations from achieving AI success
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {adoptionBarriers.map((item, index) => (
-              <div key={index} className="flex items-center space-x-6 p-8 bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-300">
-                <div className="text-4xl font-extralight text-red-400 min-w-[80px]">{item.percentage}</div>
+              <div key={index} className="flex items-center space-x-6 p-8 bg-white border border-blue-200 hover:shadow-lg transition-all duration-300">
+                <div className="text-4xl font-extralight text-red-500 min-w-[80px]">{item.percentage}</div>
                 <div>
-                  <h4 className="text-lg font-light text-white mb-2">{item.barrier}</h4>
-                  <p className="text-gray-300 text-sm font-light">{item.description}</p>
+                  <h4 className="text-lg font-light text-gray-800 mb-2">{item.barrier}</h4>
+                  <p className="text-gray-600 text-sm font-light">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -138,15 +137,15 @@ const StateOfAI = () => {
           <h3 className="text-4xl font-light text-center text-white mb-12">Critical Success Factors</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {successFactors.map((factor, index) => (
-              <Card key={index} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300">
+              <Card key={index} className="bg-white border-blue-200 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center pb-6">
-                  <CardTitle className="text-lg font-light text-white leading-tight mb-4">
+                  <CardTitle className="text-lg font-light text-gray-800 leading-tight mb-4">
                     {factor.title}
                   </CardTitle>
-                  <div className="text-3xl font-extralight text-green-400">{factor.impact}</div>
+                  <div className="text-3xl font-extralight text-green-500">{factor.impact}</div>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-gray-300 font-light leading-relaxed text-center">
+                  <CardDescription className="text-gray-600 font-light leading-relaxed text-center">
                     {factor.description}
                   </CardDescription>
                 </CardContent>
@@ -159,17 +158,9 @@ const StateOfAI = () => {
           <h3 className="text-3xl font-light text-white mb-8">
             Ready to Join the AI Leaders?
           </h3>
-          <p className="text-lg text-gray-300 mb-12 font-light">
-            Access the complete State of AI report with detailed insights and actionable recommendations.
+          <p className="text-lg text-blue-100 mb-12 font-light">
+            Access comprehensive insights and actionable recommendations for AI transformation.
           </p>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-            <Button className="bg-white hover:bg-gray-100 text-black px-8 py-4 text-lg font-light">
-              Download Full Report
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-light bg-transparent">
-              Request Custom Analysis
-            </Button>
-          </div>
         </div>
       </div>
     </div>
