@@ -11,7 +11,7 @@ const Navigation = () => {
               <div className="w-4 h-4 bg-white rounded-full"></div>
             </div>
             <span className="text-2xl font-light text-blue-600 tracking-tight">
-              KALYM.org
+              KALYM.me
             </span>
           </div>
           

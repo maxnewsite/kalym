@@ -53,7 +53,7 @@ const Index = () => {
               <div className="w-5 h-5 bg-white rounded-full"></div>
             </div>
             <div className="text-3xl font-light text-blue-600 tracking-tight">
-              KALYM.org
+              KALYM.me
             </div>
           </div>
           <p className="text-gray-600 font-light text-lg mb-2">AI Orchestration Platform for the GCC Region</p>
