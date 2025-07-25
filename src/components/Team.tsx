@@ -121,9 +121,9 @@ const Team = () => {
                       href={member.linkedin} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="absolute top-0 right-1/2 transform translate-x-1/2 -translate-y-2 bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors duration-200"
+                      className="absolute top-2 right-2 bg-blue-600 hover:bg-blue-700 p-1.5 rounded-full transition-colors duration-200"
                     >
-                      <Linkedin className="w-4 h-4 text-white" />
+                      <Linkedin className="w-3 h-3 text-white" />
                     </a>
                   )}
                 </div>
