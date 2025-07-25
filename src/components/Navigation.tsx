@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
@@ -19,6 +20,7 @@ const Navigation = () => {
             <a href="#home" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</a>
             <a href="#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</a>
             <a href="#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</a>
+            <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Blog</Link>
             <a href="#ceo-imperative" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</a>
             <a href="#cio-guide" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</a>
             <a href="#state-of-ai" className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</a>
