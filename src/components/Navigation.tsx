@@ -17,16 +17,16 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/#home" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</Link>
+            <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</Link>
             <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Blog</Link>
-            <Link to="/#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
-            <Link to="/#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
-            <Link to="/#ceo-imperative" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</Link>
-            <Link to="/#cio-guide" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</Link>
-            <Link to="/#state-of-ai" className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</Link>
-            <Link to="/#team" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Team</Link>
-            <Link to="/#white-papers" className="text-gray-600 hover:text-blue-600 transition-colors font-light">White Papers</Link>
-            <Link to="/#contact" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Your AI Use Case</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('manifesto')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('ceo-imperative')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('cio-guide')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('state-of-ai')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Team</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('white-papers')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">White Papers</Link>
+            <Link to="/" onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Your AI Use Case</Link>
           </div>
         </div>
       </div>
