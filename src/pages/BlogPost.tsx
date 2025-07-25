@@ -8,6 +8,7 @@ import { CalendarDays, Clock, User, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import ShareButton from '@/components/ShareButton';
+import { OptimizedImage } from '@/components/OptimizedImage';
 
 interface BlogPost {
   id: string;
@@ -207,10 +208,11 @@ const BlogPost = () => {
               {/* Featured Image */}
               {post.featured_image_url && (
                 <div className="aspect-video overflow-hidden rounded-lg mb-8">
-                  <img 
+                  <OptimizedImage 
                     src={post.featured_image_url} 
                     alt={post.title}
                     className="w-full h-full object-cover"
+                    priority={true}
                   />
                 </div>
               )}
@@ -249,15 +251,15 @@ const BlogPost = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost) => (
                 <Card key={relatedPost.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  {relatedPost.featured_image_url && (
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={relatedPost.featured_image_url} 
-                        alt={relatedPost.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  )}
+                   {relatedPost.featured_image_url && (
+                     <div className="aspect-video overflow-hidden">
+                       <OptimizedImage 
+                         src={relatedPost.featured_image_url} 
+                         alt={relatedPost.title}
+                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                       />
+                     </div>
+                   )}
                   <CardHeader>
                     {relatedPost.blog_categories && (
                       <Badge variant="secondary" className="w-fit mb-2">

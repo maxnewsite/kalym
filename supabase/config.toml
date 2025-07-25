@@ -1,1 +1,4 @@
 project_id = "shtbxnpauhbpihvxpxol"
+
+[functions.convert-to-webp]
+verify_jwt = false

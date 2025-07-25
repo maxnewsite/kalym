@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
+import { OptimizedImage } from "@/components/OptimizedImage";
 
 interface BlogPost {
   id: string;
@@ -146,10 +147,11 @@ export default function BlogIndex() {
               <div className="md:flex">
                 <div className="md:w-1/2">
                   {featuredPost.featured_image_url && (
-                    <img 
+                    <OptimizedImage 
                       src={featuredPost.featured_image_url} 
                       alt={featuredPost.title}
                       className="w-full h-64 md:h-full object-cover"
+                      priority={true}
                     />
                   )}
                 </div>
@@ -224,7 +226,7 @@ export default function BlogIndex() {
               <Card key={post.id} className="group hover:shadow-lg transition-shadow duration-300 overflow-hidden">
                 {post.featured_image_url && (
                   <div className="aspect-video overflow-hidden">
-                    <img 
+                    <OptimizedImage 
                       src={post.featured_image_url} 
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
