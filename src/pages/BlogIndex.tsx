@@ -1,265 +1,323 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Navigation from '@/components/Navigation';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { CalendarDays, Clock, User } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import Navigation from "@/components/Navigation";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 
-// Mock blog data - will be replaced with Supabase
-const blogPosts = [
-  {
-    id: 'ai-transformation-gcc-2024',
-    title: 'AI Transformation in the GCC: A 2024 Perspective',
-    description: 'Exploring the rapid adoption of AI technologies across the Gulf Cooperation Council region and their impact on business transformation.',
-    content: 'The Gulf Cooperation Council region is experiencing unprecedented growth in AI adoption...',
-    category: 'AI Strategy',
-    tags: ['AI', 'GCC', 'Digital Transformation', 'Strategy'],
-    author: 'Dr. Sarah Al-Rashid',
-    publishedAt: '2024-01-15',
-    readTime: 8,
-    featured: true,
-    image: '/lovable-uploads/f9b61447-3ca0-48fa-a5c3-79b63e039560.png'
-  },
-  {
-    id: 'ceo-guide-ai-implementation',
-    title: 'CEO Guide to AI Implementation in Middle Eastern Markets',
-    description: 'A comprehensive guide for C-level executives on successfully implementing AI initiatives while respecting regional business culture.',
-    content: 'For CEOs in the Middle East, implementing AI requires a nuanced understanding...',
-    category: 'Leadership',
-    tags: ['CEO', 'Implementation', 'Middle East', 'Leadership'],
-    author: 'Ahmed Hassan',
-    publishedAt: '2024-01-10',
-    readTime: 12,
-    featured: false,
-    image: '/lovable-uploads/f025e4d9-5cc0-4cca-a4c5-bb651f8ff98e.png'
-  },
-  {
-    id: 'data-governance-gcc-regulations',
-    title: 'Data Governance and AI Compliance in GCC Markets',
-    description: 'Understanding regulatory frameworks and best practices for AI data governance across Gulf states.',
-    content: 'Navigating the complex landscape of data governance in the GCC requires...',
-    category: 'Compliance',
-    tags: ['Data Governance', 'Compliance', 'Regulations', 'GCC'],
-    author: 'Fatima Al-Zahra',
-    publishedAt: '2024-01-05',
-    readTime: 6,
-    featured: false,
-    image: '/lovable-uploads/massimiliano-masi.png'
+interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  status: string;
+  featured: boolean;
+  author_name: string;
+  author_avatar?: string;
+  category_id: string;
+  published_at: string | null;
+  reading_time: number;
+  created_at: string;
+  view_count: number;
+  featured_image_url?: string;
+  blog_categories?: {
+    name: string;
+    slug: string;
+  };
+}
+
+interface Category {
+  id: string;
+  name: string;
+  slug: string;
+}
+
+export default function BlogIndex() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    fetchPosts();
+    fetchCategories();
+  }, []);
+
+  const fetchPosts = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select(`
+          *,
+          blog_categories (
+            name,
+            slug
+          )
+        `)
+        .eq('status', 'published')
+        .order('featured', { ascending: false })
+        .order('published_at', { ascending: false });
+      
+      if (error) throw error;
+      setPosts(data || []);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchCategories = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blog_categories')
+        .select('*')
+        .order('name');
+      
+      if (error) throw error;
+      setCategories(data || []);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
+
+  const filteredPosts = posts.filter(post => 
+    selectedCategory === "All" || 
+    post.blog_categories?.name === selectedCategory
+  );
+
+  const featuredPost = posts.find(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: Implement newsletter signup
+    console.log('Newsletter signup:', email);
+    setEmail("");
+  };
+
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return '';
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center">Loading...</div>
+        </div>
+      </div>
+    );
   }
-];
-
-const categories = ['All', 'AI Strategy', 'Leadership', 'Compliance', 'Technology', 'Research'];
-
-const BlogIndex = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState('All');
-  
-  const filteredPosts = selectedCategory === 'All' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === selectedCategory);
-
-  const featuredPost = blogPosts.find(post => post.featured);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* SEO Meta Tags */}
-      <title>AI Insights & Research Blog | Kalym.me</title>
-      <meta name="description" content="Expert insights on AI transformation, digital strategy, and technology leadership in the GCC region. Read the latest research and trends from Kalym.me." />
-      <meta name="keywords" content="AI blog, GCC technology, digital transformation, AI strategy, Middle East AI, Kalym.me insights" />
-      <meta property="og:title" content="AI Insights & Research Blog | Kalym.me" />
-      <meta property="og:description" content="Expert insights on AI transformation and digital strategy in the GCC region" />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://kalym.me/blog" />
-
+    <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Blog Header */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-light text-primary mb-6">
-              AI Insights & Research
-            </h1>
-            <p className="text-xl text-muted-foreground font-light leading-relaxed">
-              Expert perspectives on AI transformation, digital strategy, and technology leadership 
-              in the GCC region and beyond.
-            </p>
-          </div>
+      {/* Header */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Kalym Blog
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Insights, trends, and thought leadership on AI transformation in the GCC region
+          </p>
         </div>
       </section>
 
-      {/* Featured Post */}
-      {featuredPost && (
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl font-light text-primary mb-8">Featured Article</h2>
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="md:flex">
-                  <div className="md:w-1/2">
+      <div className="container mx-auto px-4 py-16">
+        {/* Featured Article */}
+        {featuredPost && (
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Featured Article</h2>
+            <Card className="overflow-hidden border-none shadow-lg bg-gradient-to-br from-primary/5 to-secondary/5">
+              <div className="md:flex">
+                <div className="md:w-1/2">
+                  {featuredPost.featured_image_url && (
                     <img 
-                      src={featuredPost.image} 
+                      src={featuredPost.featured_image_url} 
                       alt={featuredPost.title}
                       className="w-full h-64 md:h-full object-cover"
                     />
-                  </div>
-                  <div className="md:w-1/2 p-8">
-                    <Badge variant="secondary" className="mb-4">
-                      {featuredPost.category}
-                    </Badge>
-                    <CardTitle className="text-2xl font-light mb-4 text-primary">
-                      <Link to={`/blog/${featuredPost.id}`} className="hover:text-primary/80 transition-colors">
-                        {featuredPost.title}
-                      </Link>
-                    </CardTitle>
-                    <CardDescription className="text-base mb-6">
-                      {featuredPost.description}
-                    </CardDescription>
-                    <div className="flex items-center space-x-6 text-sm text-muted-foreground mb-6">
-                      <div className="flex items-center space-x-2">
-                        <User className="w-4 h-4" />
-                        <span>{featuredPost.author}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CalendarDays className="w-4 h-4" />
-                        <span>{new Date(featuredPost.publishedAt).toLocaleDateString()}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Clock className="w-4 h-4" />
-                        <span>{featuredPost.readTime} min read</span>
-                      </div>
-                    </div>
-                    <Button asChild>
-                      <Link to={`/blog/${featuredPost.id}`}>
-                        Read Article
-                      </Link>
-                    </Button>
-                  </div>
+                  )}
                 </div>
-              </Card>
-            </div>
+                <div className="md:w-1/2 p-8">
+                  <div className="flex items-center gap-4 mb-4">
+                    {featuredPost.blog_categories && (
+                      <Badge variant="secondary">
+                        {featuredPost.blog_categories.name}
+                      </Badge>
+                    )}
+                    <Badge variant="outline">Featured</Badge>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                    {featuredPost.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 line-clamp-3">
+                    {featuredPost.excerpt}
+                  </p>
+                  <div className="flex items-center gap-4 mb-6 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <User className="w-4 h-4" />
+                      {featuredPost.author_name}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {formatDate(featuredPost.published_at)}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {featuredPost.reading_time} min read
+                    </div>
+                  </div>
+                  <Link to={`/blog/${featuredPost.slug}`}>
+                    <Button className="group">
+                      Read Article
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Card>
+          </section>
+        )}
+
+        {/* Category Filter */}
+        <section className="mb-12">
+          <div className="flex flex-wrap gap-2">
+            <Button
+              variant={selectedCategory === "All" ? "default" : "outline"}
+              onClick={() => setSelectedCategory("All")}
+              className="mb-2"
+            >
+              All Articles
+            </Button>
+            {categories.map((category) => (
+              <Button
+                key={category.id}
+                variant={selectedCategory === category.name ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category.name)}
+                className="mb-2"
+              >
+                {category.name}
+              </Button>
+            ))}
           </div>
         </section>
-      )}
 
-      {/* Category Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category)}
-                  size="sm"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.filter(post => !post.featured).map((post) => (
-                <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+        {/* Blog Posts Grid */}
+        <section className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {regularPosts.map((post) => (
+              <Card key={post.id} className="group hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+                {post.featured_image_url && (
                   <div className="aspect-video overflow-hidden">
                     <img 
-                      src={post.image} 
+                      src={post.featured_image_url} 
                       alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
+                )}
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    {post.blog_categories && (
                       <Badge variant="secondary" className="text-xs">
-                        {post.category}
+                        {post.blog_categories.name}
                       </Badge>
-                      <div className="flex items-center space-x-1 text-xs text-muted-foreground">
-                        <Clock className="w-3 h-3" />
-                        <span>{post.readTime} min</span>
-                      </div>
+                    )}
+                    <span className="text-xs text-muted-foreground">
+                      {post.view_count} views
+                    </span>
+                  </div>
+                  <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors">
+                    {post.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
+                    <div className="flex items-center gap-1">
+                      <User className="w-3 h-3" />
+                      {post.author_name}
                     </div>
-                    <CardTitle className="text-xl font-light">
-                      <Link to={`/blog/${post.id}`} className="hover:text-primary transition-colors">
-                        {post.title}
-                      </Link>
-                    </CardTitle>
-                    <CardDescription>
-                      {post.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm text-muted-foreground">
-                        By {post.author}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {new Date(post.publishedAt).toLocaleDateString()}
-                      </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {post.reading_time} min
                     </div>
-                    <div className="flex flex-wrap gap-1 mt-3">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">
+                      {formatDate(post.published_at)}
+                    </span>
+                    <Link to={`/blog/${post.slug}`}>
+                      <Button variant="ghost" size="sm" className="group">
+                        Read More
+                        <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* Newsletter Subscription */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-light text-primary mb-4">
-              Stay Updated with AI Insights
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Get the latest research, trends, and expert analysis delivered to your inbox.
+          {regularPosts.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                No posts found in this category.
+              </p>
+            </div>
+          )}
+        </section>
+
+        {/* Newsletter Subscription */}
+        <section className="py-16 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-2xl">
+          <div className="text-center max-w-2xl mx-auto px-8">
+            <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+            <p className="text-muted-foreground mb-8">
+              Get the latest insights on AI and digital transformation in the GCC region delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <Input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-md border border-input bg-background text-foreground"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1"
               />
-              <Button className="px-8">
+              <Button type="submit">
                 Subscribe
               </Button>
-            </div>
+            </form>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Footer */}
-      <footer className="bg-muted border-t py-20">
-        <div className="container mx-auto px-6 text-center">
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <div className="w-5 h-5 bg-background rounded-full"></div>
-            </div>
-            <div className="text-3xl font-light text-primary tracking-tight">
-              KALYM.me
-            </div>
-          </div>
-          <p className="text-muted-foreground font-light text-lg mb-2">AI Orchestration Platform for the GCC Region</p>
-          <p className="text-muted-foreground text-sm font-light">Powered by elite data scientists and proven research</p>
+      <footer className="bg-muted/30 py-12">
+        <div className="container mx-auto px-4 text-center">
+          <h3 className="text-2xl font-bold mb-2">Kalym</h3>
+          <p className="text-muted-foreground">
+            Transforming the future of AI in the GCC region
+          </p>
         </div>
       </footer>
     </div>
   );
-};
-
-export default BlogIndex;
+}
