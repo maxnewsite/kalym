@@ -66,16 +66,6 @@ Visit KALYM.org for more information.`;
           ))}
         </div>
 
-        <div className="text-center">
-          <Button 
-            onClick={handleDownloadManifesto}
-            variant="outline"
-            className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 text-lg font-light bg-transparent"
-          >
-            <Download className="h-5 w-5 mr-3" />
-            Download Full Manifesto
-          </Button>
-        </div>
       </div>
     </section>
   );

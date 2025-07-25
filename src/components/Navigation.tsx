@@ -18,9 +18,9 @@ const Navigation = () => {
           
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/#home" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</Link>
-            <Link to="/#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
-            <Link to="/#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
             <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Blog</Link>
+            <Link to="/#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
+            <Link to="/#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
             <Link to="/#ceo-imperative" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</Link>
             <Link to="/#cio-guide" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</Link>
             <Link to="/#state-of-ai" className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</Link>
