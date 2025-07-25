@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Pencil, Trash2, Plus, Eye } from "lucide-react";
+import { Pencil, Trash2, Plus, Eye, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 
 interface BlogPost {
@@ -55,11 +55,14 @@ export default function AdminBlog() {
     status: "draft",
     featured: false,
     author_name: "",
+    author_avatar: "",
+    featured_image_url: "",
     category_id: "",
     reading_time: 5,
     meta_title: "",
     meta_description: ""
   });
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -181,6 +184,8 @@ export default function AdminBlog() {
         status: "draft",
         featured: false,
         author_name: "",
+        author_avatar: "",
+        featured_image_url: "",
         category_id: "",
         reading_time: 5,
         meta_title: "",
@@ -190,6 +195,74 @@ export default function AdminBlog() {
     } catch (error) {
       toast.error('Failed to save post');
       console.error(error);
+    }
+  };
+
+  const uploadImage = async (file: File, type: 'featured' | 'avatar') => {
+    try {
+      setUploading(true);
+      
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${type}-${Date.now()}.${fileExt}`;
+      const filePath = `${type}/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('blog-images')
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data: { publicUrl } } = supabase.storage
+        .from('blog-images')
+        .getPublicUrl(filePath);
+
+      if (type === 'featured') {
+        if (editingPost) {
+          setEditingPost({ ...editingPost, featured_image_url: publicUrl });
+        } else {
+          setNewPost({ ...newPost, featured_image_url: publicUrl });
+        }
+      } else {
+        if (editingPost) {
+          setEditingPost({ ...editingPost, author_avatar: publicUrl });
+        } else {
+          setNewPost({ ...newPost, author_avatar: publicUrl });
+        }
+      }
+
+      toast.success(`${type === 'featured' ? 'Featured image' : 'Author avatar'} uploaded successfully`);
+    } catch (error) {
+      toast.error('Failed to upload image');
+      console.error(error);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>, type: 'featured' | 'avatar') => {
+    const file = event.target.files?.[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+        toast.error('File size must be less than 5MB');
+        return;
+      }
+      uploadImage(file, type);
+    }
+  };
+
+  const removeImage = (type: 'featured' | 'avatar') => {
+    if (type === 'featured') {
+      if (editingPost) {
+        setEditingPost({ ...editingPost, featured_image_url: undefined });
+      } else {
+        setNewPost({ ...newPost, featured_image_url: "" });
+      }
+    } else {
+      if (editingPost) {
+        setEditingPost({ ...editingPost, author_avatar: undefined });
+      } else {
+        setNewPost({ ...newPost, author_avatar: "" });
+      }
     }
   };
 
@@ -389,6 +462,97 @@ export default function AdminBlog() {
                         : setNewPost({ ...newPost, reading_time: parseInt(e.target.value) || 5 })
                       }
                     />
+                  </div>
+                </div>
+
+                {/* Image uploads section */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Featured Image Upload */}
+                  <div className="space-y-2">
+                    <Label>Featured Image</Label>
+                    <div className="border-2 border-dashed border-muted rounded-lg p-4">
+                      {currentPost.featured_image_url ? (
+                        <div className="space-y-2">
+                          <img 
+                            src={currentPost.featured_image_url} 
+                            alt="Featured" 
+                            className="w-full h-32 object-cover rounded"
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeImage('featured')}
+                            className="w-full"
+                          >
+                            <X className="w-4 h-4 mr-2" />
+                            Remove Image
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="text-center">
+                          <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                          <Label
+                            htmlFor="featured-upload"
+                            className="cursor-pointer text-sm text-muted-foreground hover:text-foreground"
+                          >
+                            Click to upload featured image
+                          </Label>
+                          <Input
+                            id="featured-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageUpload(e, 'featured')}
+                            className="hidden"
+                            disabled={uploading}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Author Avatar Upload */}
+                  <div className="space-y-2">
+                    <Label>Author Avatar</Label>
+                    <div className="border-2 border-dashed border-muted rounded-lg p-4">
+                      {currentPost.author_avatar ? (
+                        <div className="space-y-2">
+                          <img 
+                            src={currentPost.author_avatar} 
+                            alt="Author" 
+                            className="w-16 h-16 object-cover rounded-full mx-auto"
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => removeImage('avatar')}
+                            className="w-full"
+                          >
+                            <X className="w-4 h-4 mr-2" />
+                            Remove Avatar
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="text-center">
+                          <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                          <Label
+                            htmlFor="avatar-upload"
+                            className="cursor-pointer text-sm text-muted-foreground hover:text-foreground"
+                          >
+                            Click to upload author avatar
+                          </Label>
+                          <Input
+                            id="avatar-upload"
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageUpload(e, 'avatar')}
+                            className="hidden"
+                            disabled={uploading}
+                          />
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
