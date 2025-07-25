@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { User, Brain, Database, Lightbulb, Settings, Target, TrendingUp, Cog } from "lucide-react";
+import { User, Brain, Database, Lightbulb, Settings, Target, TrendingUp, Cog, Linkedin } from "lucide-react";
 
 const Team = () => {
   const teamMembers = [
@@ -11,9 +11,10 @@ const Team = () => {
       position: "CEO/Founder",
       company: "KALYM.me",
       location: "United Arab Emirates",
-      image: "/lovable-uploads/f9b61447-3ca0-48fa-a5c3-79b63e039560.png",
+      image: "/lovable-uploads/b7e41af5-8cfb-4cae-9326-42ec28ff0aa6.png",
       initials: "MM",
-      icon: User
+      icon: User,
+      linkedin: "https://linkedin.com/in/massimiliano-masi-4265ab"
     },
     {
       name: "Amira Al-Hassan",
@@ -102,10 +103,10 @@ const Team = () => {
           {teamMembers.map((member, index) => (
             <Card key={index} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300">
               <CardContent className="p-8 text-center">
-                <div className="mb-6">
+                <div className="mb-6 relative">
                   {member.image ? (
                     <Avatar className="w-20 h-20 mx-auto mb-4">
-                      <AvatarImage src={member.image} alt={member.name} />
+                      <AvatarImage src={member.image} alt={member.name} className="object-cover object-center" />
                       <AvatarFallback className="bg-gray-700 text-white text-lg font-light">
                         {member.initials}
                       </AvatarFallback>
@@ -114,6 +115,16 @@ const Team = () => {
                     <div className="w-20 h-20 mx-auto mb-4 bg-gray-700 rounded-full flex items-center justify-center">
                       <member.icon className="w-10 h-10 text-blue-400" />
                     </div>
+                  )}
+                  {member.linkedin && (
+                    <a 
+                      href={member.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="absolute top-0 right-1/2 transform translate-x-1/2 -translate-y-2 bg-blue-600 hover:bg-blue-700 p-2 rounded-full transition-colors duration-200"
+                    >
+                      <Linkedin className="w-4 h-4 text-white" />
+                    </a>
                   )}
                 </div>
                 
