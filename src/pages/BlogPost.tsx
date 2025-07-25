@@ -3,9 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CalendarDays, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { CalendarDays, Clock, User, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
+import ShareButton from '@/components/ShareButton';
 
 interface BlogPost {
   id: string;
@@ -169,8 +171,17 @@ const BlogPost = () => {
               
               {/* Article Meta */}
               <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8">
-                <div className="flex items-center space-x-2">
-                  <User className="w-4 h-4" />
+                <div className="flex items-center space-x-3">
+                  {post.author_avatar ? (
+                    <Avatar className="w-8 h-8">
+                      <AvatarImage src={post.author_avatar} alt={post.author_name} />
+                      <AvatarFallback>
+                        {post.author_name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+                  ) : (
+                    <User className="w-4 h-4" />
+                  )}
                   <span>{post.author_name}</span>
                 </div>
                 {post.published_at && (
@@ -185,10 +196,12 @@ const BlogPost = () => {
                     <span>{post.reading_time} min read</span>
                   </div>
                 )}
-                <Button variant="outline" size="sm">
-                  <Share2 className="w-4 h-4 mr-2" />
-                  Share
-                </Button>
+                <ShareButton 
+                  url={`/blog/${post.slug}`}
+                  title={post.title}
+                  description={post.meta_description || post.excerpt || ''}
+                  size="sm"
+                />
               </div>
 
               {/* Featured Image */}
@@ -218,10 +231,11 @@ const BlogPost = () => {
                   Back to Blog
                 </Link>
               </Button>
-              <Button variant="outline">
-                <Share2 className="w-4 h-4 mr-2" />
-                Share Article
-              </Button>
+              <ShareButton 
+                url={`/blog/${post.slug}`}
+                title={post.title}
+                description={post.meta_description || post.excerpt || ''}
+              />
             </div>
           </div>
         </div>
