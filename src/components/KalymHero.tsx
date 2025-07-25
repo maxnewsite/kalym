@@ -27,7 +27,7 @@ const KalymHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-16 max-w-4xl mx-auto font-light leading-relaxed">
-            Join the 12% who achieve AI success. KALYM.org delivers 15-20% operational improvements 
+            Join the 12% who achieve AI success. KALYM.me delivers 15-20% operational improvements 
             through elite data science and proven GCC market activation.
           </p>
 
