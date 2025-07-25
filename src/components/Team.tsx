@@ -2,72 +2,81 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { User, Brain, Database, Lightbulb, Settings, Target, TrendingUp, Cog } from "lucide-react";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Massimiliano Masi",
       position: "CEO/Founder",
-      company: "KALYM.org",
+      company: "KALYM.me",
       location: "United Arab Emirates",
-      image: "/placeholder.svg",
-      initials: "MM"
+      image: "/lovable-uploads/f9b61447-3ca0-48fa-a5c3-79b63e039560.png",
+      initials: "MM",
+      icon: User
     },
     {
       name: "Amira Al-Hassan",
       position: "Chief Technology Officer",
       company: "TechVision Solutions",
       location: "Saudi Arabia",
-      image: "/placeholder.svg",
-      initials: "AH"
+      image: null,
+      initials: "AH",
+      icon: Settings
     },
     {
       name: "Omar Khalil",
       position: "VP of Data Science",
       company: "DataCorp Analytics",
       location: "Qatar",
-      image: "/placeholder.svg",
-      initials: "OK"
+      image: null,
+      initials: "OK",
+      icon: Database
     },
     {
       name: "Layla Rahman",
       position: "Head of AI Research",
       company: "Innovation Labs",
       location: "Kuwait",
-      image: "/placeholder.svg",
-      initials: "LR"
+      image: null,
+      initials: "LR",
+      icon: Brain
     },
     {
       name: "Hassan Al-Mahmoud",
       position: "Director of Engineering",
       company: "CloudTech Systems",
       location: "Bahrain",
-      image: "/placeholder.svg",
-      initials: "HM"
+      image: null,
+      initials: "HM",
+      icon: Cog
     },
     {
       name: "Fatima Al-Zahra",
       position: "Chief Strategy Officer",
       company: "Strategic Ventures",
       location: "Oman",
-      image: "/placeholder.svg",
-      initials: "FZ"
+      image: null,
+      initials: "FZ",
+      icon: Target
     },
     {
       name: "Ahmed Mansouri",
       position: "VP of Business Development",
       company: "GrowthPartners",
       location: "United Arab Emirates",
-      image: "/placeholder.svg",
-      initials: "AM"
+      image: null,
+      initials: "AM",
+      icon: TrendingUp
     },
     {
       name: "Nadia Al-Rashid",
       position: "Head of Operations",
       company: "OptiFlow Solutions",
       location: "Saudi Arabia",
-      image: "/placeholder.svg",
-      initials: "NR"
+      image: null,
+      initials: "NR",
+      icon: Lightbulb
     }
   ];
 
@@ -94,12 +103,18 @@ const Team = () => {
             <Card key={index} className="bg-gray-900 border-gray-800 hover:bg-gray-800 transition-all duration-300">
               <CardContent className="p-8 text-center">
                 <div className="mb-6">
-                  <Avatar className="w-20 h-20 mx-auto mb-4">
-                    <AvatarImage src={member.image} alt={member.name} />
-                    <AvatarFallback className="bg-gray-700 text-white text-lg font-light">
-                      {member.initials}
-                    </AvatarFallback>
-                  </Avatar>
+                  {member.image ? (
+                    <Avatar className="w-20 h-20 mx-auto mb-4">
+                      <AvatarImage src={member.image} alt={member.name} />
+                      <AvatarFallback className="bg-gray-700 text-white text-lg font-light">
+                        {member.initials}
+                      </AvatarFallback>
+                    </Avatar>
+                  ) : (
+                    <div className="w-20 h-20 mx-auto mb-4 bg-gray-700 rounded-full flex items-center justify-center">
+                      <member.icon className="w-10 h-10 text-blue-400" />
+                    </div>
+                  )}
                 </div>
                 
                 <h3 className="text-lg font-light text-white mb-2">
