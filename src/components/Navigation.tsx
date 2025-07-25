@@ -17,16 +17,16 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</a>
-            <a href="#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</a>
-            <a href="#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</a>
+            <Link to="/#home" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</Link>
+            <Link to="/#manifesto" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
+            <Link to="/#platform" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
             <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Blog</Link>
-            <a href="#ceo-imperative" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</a>
-            <a href="#cio-guide" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</a>
-            <a href="#state-of-ai" className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</a>
-            <a href="#team" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Team</a>
-            <a href="#white-papers" className="text-gray-600 hover:text-blue-600 transition-colors font-light">White Papers</a>
-            <a href="#contact" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Your AI Use Case</a>
+            <Link to="/#ceo-imperative" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</Link>
+            <Link to="/#cio-guide" className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</Link>
+            <Link to="/#state-of-ai" className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</Link>
+            <Link to="/#team" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Team</Link>
+            <Link to="/#white-papers" className="text-gray-600 hover:text-blue-600 transition-colors font-light">White Papers</Link>
+            <Link to="/#contact" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Your AI Use Case</Link>
           </div>
         </div>
       </div>
