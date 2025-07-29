@@ -65,6 +65,16 @@ const BlogPost = () => {
 
         setPost(data);
 
+        // Increment view count
+        const { error: updateError } = await supabase
+          .from('blog_posts')
+          .update({ view_count: (data.view_count || 0) + 1 })
+          .eq('id', data.id);
+
+        if (updateError) {
+          console.error('Error updating view count:', updateError);
+        }
+
         // Fetch related posts from the same category
         if (data.category_id) {
           const { data: related } = await supabase
