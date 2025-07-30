@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, Target as Search, Target as CheckCircle } from 'lucide-react';
 
 const KalymHero = () => {
-  console.log('KalymHero component rendering...');
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -13,50 +12,105 @@ const KalymHero = () => {
   };
 
   return (
-    <section className="min-h-[65vh] bg-gradient-to-b from-white to-blue-50/30 flex items-center justify-center relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-transparent to-primary/5" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-glow/10 rounded-full blur-3xl" />
+    <section className="min-h-screen bg-gradient-to-b from-white to-blue-50/10 flex items-center justify-center relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/4 w-48 h-48 bg-primary/3 rounded-full blur-2xl" />
+      </div>
       
-      <div className="container mx-auto text-center relative z-10 pt-24 pb-16">
-        {/* Main Hero Content */}
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light mb-8 leading-[1.1] tracking-tight text-balance">
-            <span className="text-foreground">
-              AI Success.
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent font-medium">
-              Orchestrated.
-            </span>
-          </h1>
-          
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed text-balance">
-            Join the 12% who achieve AI success. KALYM delivers 15-20% operational improvements 
-            through elite data science and proven GCC market expertise.
-          </p>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left side - Main content */}
+          <div className="text-left max-w-2xl">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-light mb-8 leading-[0.9] tracking-tight">
+              <span className="text-foreground block">
+                AI Success.
+              </span>
+              <span className="bg-gradient-to-r from-primary via-primary to-blue-600 bg-clip-text text-transparent font-normal block">
+                Orchestrated.
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-xl">
+              Join the 12% who achieve AI success.<br />
+              KALYM delivers 15-20% operational improvements 
+              through elite data science and proven GCC market expertise.
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button 
-              size="lg" 
-              className="btn-primary group"
-              onClick={scrollToContact}
-            >
-              Submit Your AI Use Case
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              onClick={() => document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-primary/20 text-primary hover:bg-primary/5"
-            >
-              Learn More
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Button 
+                size="lg" 
+                className="btn-primary group text-lg px-8 py-6"
+                onClick={scrollToContact}
+              >
+                Submit Your AI Use Case
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+              <Button 
+                variant="outline"
+                size="lg"
+                onClick={() => document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border-primary/20 text-primary hover:bg-primary/5 text-lg px-8 py-6"
+              >
+                Learn More
+              </Button>
+            </div>
+          </div>
+
+          {/* Right side - 3-step process */}
+          <div className="space-y-8">
+            <div className="text-center lg:text-left mb-12">
+              <h2 className="text-3xl md:text-4xl font-light text-foreground mb-4 tracking-tight">
+                Simple 3-Step Process
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Your AI Use Case, Market-Ready in 3 Simple Steps
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-6 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
+                <div className="w-16 h-16 bg-primary flex items-center justify-center rounded-full flex-shrink-0 shadow-lg">
+                  <Target className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium text-foreground mb-2">Submit Your Vision</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Submit your AI Use Case through our streamlined portal. Whether it's predictive maintenance, 
+                    dynamic pricing, or service automation—share your challenge.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-6 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
+                <div className="w-16 h-16 bg-primary flex items-center justify-center rounded-full flex-shrink-0 shadow-lg">
+                  <Search className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium text-foreground mb-2">Quick Due Diligence</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    We'll connect within 72 hours for focused due diligence. Our experts evaluate commercial viability, 
+                    technical requirements, and GCC market alignment.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-6 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
+                <div className="w-16 h-16 bg-primary flex items-center justify-center rounded-full flex-shrink-0 shadow-lg">
+                  <CheckCircle className="h-8 w-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium text-foreground mb-2">Partnership Agreement</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    If aligned, we'll send our partnership agreement outlining revenue sharing, go-to-market strategy, 
+                    and implementation timeline for full market orchestration.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
       
       {/* 3-Step Process Section */}
