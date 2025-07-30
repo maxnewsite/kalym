@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,16 +11,37 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const Navigation = () => {
   console.log('Navigation component rendering...');
+  const [isOpen, setIsOpen] = useState(false);
+  const [researchOpen, setResearchOpen] = useState(false);
+  const [platformOpen, setPlatformOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
+    setIsOpen(false); // Close mobile menu when navigating
     setTimeout(() => {
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }, 100);
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false); // Close mobile menu when navigating
   };
 
   return (
@@ -148,13 +170,135 @@ const Navigation = () => {
             </NavigationMenu>
           </div>
 
-          <Button 
-            onClick={() => scrollToSection('contact')}
-            className="btn-primary hidden md:inline-flex"
-            size="sm"
-          >
-            Submit Use Case
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              className="btn-primary hidden md:inline-flex"
+              size="sm"
+            >
+              Submit Use Case
+            </Button>
+
+            {/* Mobile Menu */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="lg:hidden p-2"
+                  aria-label="Open menu"
+                >
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-80 p-0">
+                <SheetHeader className="p-6 border-b">
+                  <SheetTitle className="text-left">Navigation Menu</SheetTitle>
+                </SheetHeader>
+                
+                <div className="flex flex-col py-4">
+                  {/* Home */}
+                  <Link 
+                    to="/" 
+                    onClick={handleLinkClick}
+                    className="px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors"
+                  >
+                    Home
+                  </Link>
+
+                  {/* Research Section */}
+                  <Collapsible open={researchOpen} onOpenChange={setResearchOpen}>
+                    <CollapsibleTrigger className="flex items-center justify-between px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors w-full text-left">
+                      Research
+                      <ChevronDown className={`h-4 w-4 transition-transform ${researchOpen ? 'rotate-180' : ''}`} />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="bg-muted/30">
+                      <button 
+                        onClick={() => scrollToSection('ceo-imperative')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">CEO Guide</div>
+                        <p className="text-xs text-muted-foreground mt-1">Strategic AI leadership insights</p>
+                      </button>
+                      <button 
+                        onClick={() => scrollToSection('cio-guide')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">CIO Guide</div>
+                        <p className="text-xs text-muted-foreground mt-1">Technical implementation strategies</p>
+                      </button>
+                      <button 
+                        onClick={() => scrollToSection('state-of-ai')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">State of AI</div>
+                        <p className="text-xs text-muted-foreground mt-1">Current AI landscape analysis</p>
+                      </button>
+                      <button 
+                        onClick={() => scrollToSection('white-papers')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">White Papers</div>
+                        <p className="text-xs text-muted-foreground mt-1">In-depth research publications</p>
+                      </button>
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Platform Section */}
+                  <Collapsible open={platformOpen} onOpenChange={setPlatformOpen}>
+                    <CollapsibleTrigger className="flex items-center justify-between px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors w-full text-left">
+                      Platform
+                      <ChevronDown className={`h-4 w-4 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
+                    </CollapsibleTrigger>
+                    <CollapsibleContent className="bg-muted/30">
+                      <button 
+                        onClick={() => scrollToSection('platform')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">Platform Overview</div>
+                        <p className="text-xs text-muted-foreground mt-1">AI orchestration capabilities</p>
+                      </button>
+                      <button 
+                        onClick={() => scrollToSection('manifesto')}
+                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
+                      >
+                        <div className="font-medium">Manifesto</div>
+                        <p className="text-xs text-muted-foreground mt-1">Our vision and principles</p>
+                      </button>
+                    </CollapsibleContent>
+                  </Collapsible>
+
+                  {/* Blog */}
+                  <Link 
+                    to="/blog" 
+                    onClick={handleLinkClick}
+                    className="px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors"
+                  >
+                    Blog
+                  </Link>
+
+                  {/* Team */}
+                  <button 
+                    onClick={() => scrollToSection('team')}
+                    className="px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors text-left"
+                  >
+                    Team
+                  </button>
+
+                  {/* Submit Use Case - Mobile */}
+                  <div className="px-6 py-4 border-t mt-4">
+                    <Button 
+                      onClick={() => scrollToSection('contact')}
+                      className="btn-primary w-full"
+                      size="sm"
+                    >
+                      Submit Use Case
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>
