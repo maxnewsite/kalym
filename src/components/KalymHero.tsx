@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, Target as Search, Target as CheckCircle } from 'lucide-react';
 
 const KalymHero = () => {
+  console.log('KalymHero component rendering...');
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {

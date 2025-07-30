@@ -12,12 +12,15 @@ import Team from '@/components/Team';
 import WhitePapers from '@/components/WhitePapers';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-white text-gray-800">
-      <Navigation />
-      
-      <main>
-        <KalymHome />
+  console.log('Index component rendering...');
+  
+  try {
+    return (
+      <div className="min-h-screen bg-white text-gray-800">
+        <Navigation />
+        
+        <main>
+          <KalymHome />
         <KalymHero />
         <Manifesto />
         <KalymPlatform />
@@ -62,6 +65,17 @@ const Index = () => {
       </footer>
     </div>
   );
+  } catch (error) {
+    console.error('Error rendering Index component:', error);
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">KALYM.me</h1>
+          <p className="text-xl text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Index;

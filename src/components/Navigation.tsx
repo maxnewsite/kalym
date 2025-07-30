@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
+  console.log('Navigation component rendering...');
   const scrollToSection = (id: string) => {
     setTimeout(() => {
       const element = document.getElementById(id);
