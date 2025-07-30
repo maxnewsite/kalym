@@ -137,8 +137,8 @@
 
   .btn-primary {
     @apply bg-primary text-primary-foreground;
-    @apply hover:shadow-glow transition-all duration-300;
-    @apply px-8 py-4 rounded-lg font-medium;
+    @apply hover:bg-primary/90 transition-all duration-300;
+    @apply px-8 py-4 rounded-lg font-medium shadow-lg hover:shadow-xl;
   }
 
   .card-elegant {
