@@ -1,33 +1,159 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
+  const scrollToSection = (id: string) => {
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 border-b border-gray-100">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center space-x-4">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 border-b border-border">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between h-18">
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-full"></div>
             </div>
-            <span className="text-2xl font-light text-blue-600 tracking-tight">
+            <span className="text-2xl font-light text-primary tracking-tight">
               KALYM.me
             </span>
-          </div>
+          </Link>
           
-          <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Home</Link>
-            <Link to="/blog" className="text-gray-600 hover:text-blue-600 transition-colors font-light">Blog</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Platform</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('manifesto')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Manifesto</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('ceo-imperative')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">CEO Guide</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('cio-guide')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">CIO Guide</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('state-of-ai')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">State of AI</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Team</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('white-papers')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">White Papers</Link>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="text-gray-600 hover:text-blue-600 transition-colors font-light">Your AI Use Case</Link>
+          <div className="hidden lg:flex items-center">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors font-light px-4 py-2">
+                    Home
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground font-light">
+                    Research
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-80">
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('ceo-imperative')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">CEO Guide</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Strategic AI leadership insights
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('cio-guide')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">CIO Guide</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Technical implementation strategies
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('state-of-ai')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">State of AI</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Current AI landscape analysis
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('white-papers')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">White Papers</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            In-depth research publications
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground font-light">
+                    Platform
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <div className="grid gap-3 p-6 w-80">
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('platform')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">Platform Overview</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            AI orchestration capabilities
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <button 
+                          onClick={() => scrollToSection('manifesto')}
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
+                        >
+                          <div className="text-sm font-medium leading-none">Manifesto</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Our vision and principles
+                          </p>
+                        </button>
+                      </NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors font-light px-4 py-2">
+                    Blog
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <button 
+                    onClick={() => scrollToSection('team')}
+                    className="text-muted-foreground hover:text-foreground transition-colors font-light px-4 py-2"
+                  >
+                    Team
+                  </button>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
+
+          <Button 
+            onClick={() => scrollToSection('contact')}
+            className="btn-primary hidden md:inline-flex"
+            size="sm"
+          >
+            Submit Use Case
+          </Button>
         </div>
       </div>
     </nav>
