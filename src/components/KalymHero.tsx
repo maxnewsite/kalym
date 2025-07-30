@@ -71,7 +71,7 @@ const KalymHero = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
             <div className="card-elegant p-8 text-center hover-lift group">
-              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-glow transition-all duration-300 group-hover:scale-110">
+              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-lg shadow-primary/20 transition-all duration-300 group-hover:scale-110">
                 <Target className="h-10 w-10 text-white" />
               </div>
               <h3 className="text-xl font-medium text-foreground mb-4">Submit Your Vision</h3>
@@ -82,7 +82,7 @@ const KalymHero = () => {
             </div>
             
             <div className="card-elegant p-8 text-center hover-lift group">
-              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-glow transition-all duration-300 group-hover:scale-110">
+              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-lg shadow-primary/20 transition-all duration-300 group-hover:scale-110">
                 <Search className="h-10 w-10 text-white" />
               </div>
               <h3 className="text-xl font-medium text-foreground mb-4">Quick Due Diligence</h3>
@@ -93,7 +93,7 @@ const KalymHero = () => {
             </div>
             
             <div className="card-elegant p-8 text-center hover-lift group">
-              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-glow transition-all duration-300 group-hover:scale-110">
+              <div className="w-20 h-20 bg-primary mx-auto mb-6 flex items-center justify-center rounded-full shadow-lg shadow-primary/20 transition-all duration-300 group-hover:scale-110">
                 <CheckCircle className="h-10 w-10 text-white" />
               </div>
               <h3 className="text-xl font-medium text-foreground mb-4">Partnership Agreement</h3>
