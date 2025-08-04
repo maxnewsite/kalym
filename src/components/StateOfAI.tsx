@@ -69,6 +69,81 @@ const StateOfAI = () => {
     }
   ];
 
+  const aiUseCases = [
+    {
+      company: "Amazon",
+      description: "GenAI Customer Stories",
+      count: "280+",
+      url: "https://aws.amazon.com/ai/generative-ai/customers/"
+    },
+    {
+      company: "Capgemini",
+      description: "Harnessing GenAI Potential",
+      count: "54",
+      url: "https://www.capgemini.com/insights/research-library/harnessing-the-value-of-generative-ai/"
+    },
+    {
+      company: "Deloitte",
+      description: "GenAI Dossier",
+      count: "73",
+      url: "https://www2.deloitte.com/us/en/pages/consulting/articles/generative-ai-dossier.html"
+    },
+    {
+      company: "EY",
+      description: "AI Use Cases Suite",
+      count: "15",
+      url: "https://www.ey.com/en_gl/services/ai/use-cases"
+    },
+    {
+      company: "Google",
+      description: "GenAI Use Cases",
+      count: "601",
+      url: "https://cloud.google.com/solutions/generative-ai"
+    },
+    {
+      company: "IBM",
+      description: "Most Valuable AI Use Cases",
+      count: "27",
+      url: "https://www.ibm.com/cloud/learn/ai-use-cases"
+    },
+    {
+      company: "Intel",
+      description: "AI Across Industries",
+      count: "35",
+      url: "https://www.intel.com/content/www/us/en/artificial-intelligence/overview.html"
+    },
+    {
+      company: "McKinsey",
+      description: "GenAI in TMT",
+      count: "63+",
+      url: "https://www.mckinsey.com/featured-insights/artificial-intelligence/"
+    },
+    {
+      company: "Microsoft",
+      description: "AI Customer Stories",
+      count: "700+",
+      url: "https://customers.microsoft.com/en-us/home/story/"
+    },
+    {
+      company: "Oracle",
+      description: "GenAI for Enterprise Apps",
+      count: "17",
+      url: "https://www.oracle.com/artificial-intelligence/"
+    },
+    {
+      company: "PwC",
+      description: "Applied AI Compass",
+      count: "200+",
+      url: "https://www.pwc.com/gx/en/issues/analytics/assets/global-ai-study.pdf"
+    },
+    {
+      company: "SAP",
+      description: "AI Use Cases by Department",
+      count: "200",
+      url: "https://www.sap.com/products/artificial-intelligence/use-cases.html"
+    }
+  ];
+
   return (
     <div className="py-32 px-6 bg-blue-600">
       <div className="container mx-auto max-w-6xl">
@@ -150,6 +225,39 @@ const StateOfAI = () => {
                   </CardDescription>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-20">
+          <h3 className="text-4xl font-light text-center text-white mb-12">Leading AI Use Cases Resources</h3>
+          <p className="text-center text-blue-100 mb-12 font-light">
+            Comprehensive collections of real-world AI implementations from industry leaders
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {aiUseCases.map((useCase, index) => (
+              <a 
+                key={index}
+                href={useCase.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 bg-white border border-blue-200 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-lg font-light text-gray-800 group-hover:text-blue-600 transition-colors">
+                    {useCase.company}
+                  </h4>
+                  <span className="text-2xl font-extralight text-blue-600">
+                    {useCase.count}
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm font-light mb-3">
+                  {useCase.description}
+                </p>
+                <div className="text-xs text-blue-500 font-light opacity-70 group-hover:opacity-100 transition-opacity">
+                  View Collection →
+                </div>
+              </a>
             ))}
           </div>
         </div>
