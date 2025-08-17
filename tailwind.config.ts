@@ -23,10 +23,31 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+				sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+				heading: ["Plus Jakarta Sans", "sans-serif"],
+				mono: ["IBM Plex Mono", "Consolas", "monospace"],
+			},
+			fontSize: {
+				'xs': '0.75rem',     // 12px
+				'sm': '0.875rem',    // 14px
+				'base': '1rem',      // 16px
+				'lg': '1.125rem',    // 18px
+				'xl': '1.25rem',     // 20px
+				'2xl': '1.5rem',     // 24px
+				'3xl': '1.875rem',   // 30px
+				'4xl': '2.25rem',    // 36px
+				'5xl': '3rem',       // 48px
+				'6xl': '3.75rem',    // 60px
 			},
 			spacing: {
-				'18': '4.5rem',
+				"4": "1rem",      // 16px
+				"6": "1.5rem",    // 24px
+				"8": "2rem",      // 32px
+				"12": "3rem",     // 48px
+				"16": "4rem",     // 64px
+				"18": "4.5rem",   // 72px (header height)
+				"20": "5rem",     // 80px (section padding)
+				"28": "7rem",     // 112px (large section padding)
 				'88': '22rem',
 				'128': '32rem',
 			},
@@ -36,11 +57,23 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
-			primary: {
-				DEFAULT: 'hsl(var(--primary))',
-				foreground: 'hsl(var(--primary-foreground))',
-				glow: 'hsl(var(--primary-glow))'
-			},
+				
+				// Executive Brand Colors
+				brand: {
+					900: "hsl(var(--brand-900))",  // #0A1F1C
+					700: "hsl(var(--brand-700))",  // #083C36
+					500: "hsl(var(--brand-500))",  // #14B8A6
+				},
+				sand: {
+					400: "hsl(var(--sand-400))",   // #E3C999
+				},
+				
+				// Semantic Mappings
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
@@ -79,7 +112,16 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				xl: "0.75rem",    // 12px
+				"2xl": "1rem",    // 16px - executive cards
+			},
+			boxShadow: {
+				'executive': 'var(--shadow-executive)',
+				'glow': 'var(--shadow-glow)',
+			},
+			transitionTimingFunction: {
+				'executive': 'cubic-bezier(.2,.8,.2,1)',
 			},
 			keyframes: {
 				'accordion-down': {
