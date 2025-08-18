@@ -145,31 +145,31 @@ const StateOfAI = () => {
   ];
 
   return (
-    <div className="py-32 px-6 bg-blue-600">
+    <div className="py-32 px-6" style={{ backgroundColor: '#E3C999' }}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-white">
+          <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-brand-900">
             State of AI
           </h2>
-          <h3 className="text-4xl font-light text-blue-100 mb-8">
+          <h3 className="text-4xl font-light text-brand-700 mb-8">
             Global Report 2025
           </h3>
-          <p className="text-lg text-blue-100 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+          <p className="text-lg text-gray-700 max-w-4xl mx-auto font-light leading-relaxed mb-8">
             Comprehensive analysis of AI adoption, challenges, and opportunities across industries and regions. Based on research from leading global institutions and 50,000+ organizations worldwide.
           </p>
-          <div className="inline-block px-8 py-3 border border-blue-300 text-blue-100 text-sm font-light rounded-full">
+          <div className="inline-block px-8 py-3 border border-brand-300 text-brand-700 text-sm font-light rounded-full">
             Global AI Research Coalition • McKinsey • PwC • Gartner • WEF
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {globalTrends.map((trend, index) => (
-            <Card key={index} className="bg-white border-blue-200 hover:shadow-lg transition-all duration-300">
+            <Card key={index} className="bg-white border-brand-200 hover:shadow-lg transition-all duration-300">
               <CardHeader className="text-center pb-6">
-                <div className="w-16 h-16 mx-auto mb-6 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-brand-500 rounded-full flex items-center justify-center">
                   {trend.icon}
                 </div>
-                <div className="text-5xl font-extralight mb-4 text-blue-600">
+                <div className="text-5xl font-extralight mb-4 text-brand-600">
                   {trend.stat}
                 </div>
                 <CardTitle className="text-lg font-light text-gray-800 leading-tight">
@@ -181,7 +181,7 @@ const StateOfAI = () => {
                   {trend.description}
                 </CardDescription>
                 <div className="text-center">
-                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-light rounded">
+                  <span className="inline-block px-3 py-1 bg-brand-50 text-brand-600 text-xs font-light rounded">
                     {trend.source}
                   </span>
                 </div>
@@ -191,13 +191,13 @@ const StateOfAI = () => {
         </div>
 
         <div className="mb-20">
-          <h3 className="text-4xl font-light text-center text-white mb-12">Top AI Adoption Barriers</h3>
-          <p className="text-center text-blue-100 mb-12 font-light">
+          <h3 className="text-4xl font-light text-center text-brand-900 mb-12">Top AI Adoption Barriers</h3>
+          <p className="text-center text-gray-700 mb-12 font-light">
             Key challenges preventing organizations from achieving AI success
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {adoptionBarriers.map((item, index) => (
-              <div key={index} className="flex items-center space-x-6 p-8 bg-white border border-blue-200 hover:shadow-lg transition-all duration-300">
+              <div key={index} className="flex items-center space-x-6 p-8 bg-white border border-brand-200 hover:shadow-lg transition-all duration-300">
                 <div className="text-4xl font-extralight text-red-500 min-w-[80px]">{item.percentage}</div>
                 <div>
                   <h4 className="text-lg font-light text-gray-800 mb-2">{item.barrier}</h4>
@@ -209,10 +209,10 @@ const StateOfAI = () => {
         </div>
 
         <div className="mb-20">
-          <h3 className="text-4xl font-light text-center text-white mb-12">Critical Success Factors</h3>
+          <h3 className="text-4xl font-light text-center text-brand-900 mb-12">Critical Success Factors</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {successFactors.map((factor, index) => (
-              <Card key={index} className="bg-white border-blue-200 hover:shadow-lg transition-all duration-300">
+              <Card key={index} className="bg-white border-brand-200 hover:shadow-lg transition-all duration-300">
                 <CardHeader className="text-center pb-6">
                   <CardTitle className="text-lg font-light text-gray-800 leading-tight mb-4">
                     {factor.title}
@@ -230,8 +230,8 @@ const StateOfAI = () => {
         </div>
 
         <div className="mb-20">
-          <h3 className="text-4xl font-light text-center text-white mb-12">Leading AI Use Cases Resources</h3>
-          <p className="text-center text-blue-100 mb-12 font-light">
+          <h3 className="text-4xl font-light text-center text-brand-900 mb-12">Leading AI Use Cases Resources</h3>
+          <p className="text-center text-gray-700 mb-12 font-light">
             Comprehensive collections of real-world AI implementations from industry leaders
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -241,20 +241,20 @@ const StateOfAI = () => {
                 href={useCase.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block p-6 bg-white border border-blue-200 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+                className="block p-6 bg-white border border-brand-200 hover:shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-lg font-light text-gray-800 group-hover:text-blue-600 transition-colors">
+                  <h4 className="text-lg font-light text-gray-800 group-hover:text-brand-600 transition-colors">
                     {useCase.company}
                   </h4>
-                  <span className="text-2xl font-extralight text-blue-600">
+                  <span className="text-2xl font-extralight text-brand-600">
                     {useCase.count}
                   </span>
                 </div>
                 <p className="text-gray-600 text-sm font-light mb-3">
                   {useCase.description}
                 </p>
-                <div className="text-xs text-blue-500 font-light opacity-70 group-hover:opacity-100 transition-opacity">
+                <div className="text-xs text-brand-500 font-light opacity-70 group-hover:opacity-100 transition-opacity">
                   View Collection →
                 </div>
               </a>
@@ -263,10 +263,10 @@ const StateOfAI = () => {
         </div>
 
         <div className="text-center">
-          <h3 className="text-3xl font-light text-white mb-8">
+          <h3 className="text-3xl font-light text-brand-900 mb-8">
             Ready to Join the AI Leaders?
           </h3>
-          <p className="text-lg text-blue-100 mb-12 font-light">
+          <p className="text-lg text-gray-700 mb-12 font-light">
             Access comprehensive insights and actionable recommendations for AI transformation.
           </p>
         </div>
