@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone } from 'lucide-react';
+import aiMarketplaceImg from "@/assets/ai-marketplace.jpg";
+import agenticSolutionsImg from "@/assets/agentic-solutions.jpg";
 
 const KalymHome = () => {
   const chips = [
@@ -15,12 +15,12 @@ const KalymHome = () => {
 
   const businessLines = [
     {
-      number: "BL1",
-      title: "AI Tech Provider Marketplace (2025)",
+      image: aiMarketplaceImg,
+      title: "AI Tech Provider Marketplace (2025-2026)",
       description: "We source and deliver vetted AI vendors to consulting firms and enterprises. Ready-to-deploy MVPs, CIO sandbox for data sovereignty, security, and transparency."
     },
     {
-      number: "BL2", 
+      image: agenticSolutionsImg, 
       title: "Full-Stack Agentic Solutions (2026+)",
       description: "We design, build, and operate autonomous use cases (e.g., fraud, dynamic pricing, maintenance, supply chain, RFP/compliance, scheduling, personalization)."
     }
@@ -41,17 +41,6 @@ const KalymHome = () => {
             We connect GCC enterprises with proven solutions and run deployments end-to-end—typically yielding 15–20% operational gains.
           </p>
           
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            <Button size="lg" className="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 text-lg">
-              Start a pilot
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="border-brand-500 text-brand-500 hover:bg-brand-50 px-8 py-4 text-lg">
-              <Phone className="mr-2 h-5 w-5" />
-              Book a discovery call
-            </Button>
-          </div>
 
           {/* Chips */}
           <div className="flex flex-wrap gap-3 justify-center">
@@ -63,21 +52,25 @@ const KalymHome = () => {
           </div>
         </div>
 
-        {/* Business Lines - Crisp */}
+        {/* Business Lines */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-brand-900 mb-12 text-center">
-            Business lines — crisp
+            Business lines
           </h3>
           
           <div className="space-y-12">
             {businessLines.map((line, index) => (
-              <Card key={index} className="bg-card border border-border p-8 hover:shadow-lg transition-all duration-300">
+              <Card key={index} className="bg-card border border-border overflow-hidden hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-0">
-                  <div className="flex items-start gap-4">
-                    <Badge variant="outline" className="bg-brand-500 text-white border-brand-500 px-3 py-1 text-sm font-semibold shrink-0">
-                      {line.number}
-                    </Badge>
-                    <div>
+                  <div className="grid md:grid-cols-2 gap-0">
+                    <div className="relative h-64 md:h-80">
+                      <img 
+                        src={line.image} 
+                        alt={line.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-8 flex flex-col justify-center">
                       <h4 className="text-2xl font-semibold text-brand-900 mb-4 leading-tight">
                         {line.title}
                       </h4>
