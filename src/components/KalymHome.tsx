@@ -38,7 +38,7 @@ const KalymHome = () => {
             Make AI deliver, not just demo
           </h2>
           <p className="text-2xl text-foreground max-w-5xl mx-auto font-light leading-relaxed mb-12">
-            We connect GCC enterprises with proven solutions and run deployments end-to-end—typically yielding 15–20% operational gains.
+            We are the most connected AI Agency in the GCC, we link GCC enterprises with proven AI solution/tech providers and orchestrate end-to-end deployments —typically yielding 15–20% operational gains.
           </p>
           
 
