@@ -137,17 +137,6 @@ const Navigation = () => {
                           </p>
                         </button>
                       </NavigationMenuLink>
-                      <NavigationMenuLink asChild>
-                        <button 
-                          onClick={() => scrollToSection('manifesto')}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
-                        >
-                          <div className="text-sm font-medium leading-none">Manifesto</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Our vision and principles
-                          </p>
-                        </button>
-                      </NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -257,13 +246,6 @@ const Navigation = () => {
                       >
                         <div className="font-medium">Platform Overview</div>
                         <p className="text-xs text-muted-foreground mt-1">AI orchestration capabilities</p>
-                      </button>
-                      <button 
-                        onClick={() => scrollToSection('manifesto')}
-                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
-                      >
-                        <div className="font-medium">Manifesto</div>
-                        <p className="text-xs text-muted-foreground mt-1">Our vision and principles</p>
                       </button>
                     </CollapsibleContent>
                   </Collapsible>
