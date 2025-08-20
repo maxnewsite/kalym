@@ -85,7 +85,7 @@ const Team = () => {
     <div className="py-32 px-6" style={{ backgroundColor: '#D4BC8E' }}>
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-20">
-          <div className="inline-block bg-brand-500 text-white px-6 py-3 rounded-full text-lg font-semibold mb-8">
+          <div className="inline-block bg-brand-500 text-white px-12 py-6 rounded-full text-3xl font-bold mb-12">
             Coming Soon
           </div>
           <h2 className="text-6xl md:text-7xl font-extralight mb-8 text-brand-900">
