@@ -6,6 +6,7 @@ import { Shield, TrendingUp, Wrench, Truck, FileText, Calendar, Target, Brain } 
 import aiMarketplaceImg from "@/assets/ai-marketplace.jpg";
 
 const KalymHome = () => {
+  // Force rebuild to clear cache
   const chips = [
     "Proven use cases",
     "Local execution", 
