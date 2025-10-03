@@ -58,14 +58,14 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				
-				// Executive Brand Colors
+			// Minimalist Brand Colors
 				brand: {
-					900: "hsl(var(--brand-900))",  // #0A1F1C
-					700: "hsl(var(--brand-700))",  // #083C36
-					500: "hsl(var(--brand-500))",  // #14B8A6
+					900: "hsl(var(--brand-900))",  // Pure black
+					700: "hsl(var(--brand-700))",  // Dark gray
+					500: "hsl(var(--brand-500))",  // Black
 				},
-				sand: {
-					400: "hsl(var(--sand-400))",   // #E3C999
+				gray: {
+					400: "hsl(var(--gray-400))",   // Mid gray
 				},
 				
 				// Semantic Mappings
@@ -110,11 +110,11 @@ export default {
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)',
-				xl: "0.75rem",    // 12px
-				"2xl": "1rem",    // 16px - executive cards
+				lg: '0',
+				md: '0',
+				sm: '0',
+				xl: "0",
+				"2xl": "0",
 			},
 			boxShadow: {
 				'executive': 'var(--shadow-executive)',

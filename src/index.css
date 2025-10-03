@@ -4,57 +4,57 @@
 
 @layer base {
   :root {
-    /* Executive Brand Palette - Emerald & Sand */
-    --brand-900: 155 79% 8%;     /* #0A1F1C - Dark executive text */
-    --brand-700: 155 79% 12%;    /* #083C36 - Secondary dark */
-    --brand-500: 172 85% 42%;    /* #14B8A6 - Emerald accent */
-    --sand-400: 41 45% 75%;      /* #E3C999 - Warm accent */
+    /* Minimalist Black & White Palette */
+    --brand-900: 0 0% 3%;        /* #080808 - Pure black */
+    --brand-700: 0 0% 10%;       /* #1A1A1A - Dark gray */
+    --brand-500: 0 0% 0%;        /* #000000 - True black */
+    --gray-400: 0 0% 70%;        /* #B3B3B3 - Mid gray */
     
     /* Semantic color mappings */
     --background: 0 0% 100%;
-    --foreground: 155 79% 8%;    /* brand-900 */
+    --foreground: 0 0% 0%;       /* Pure black text */
 
     --card: 0 0% 100%;
-    --card-foreground: 155 79% 8%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 155 79% 8%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 172 85% 42%;      /* brand-500 emerald */
+    --primary: 0 0% 0%;          /* Black primary */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 172 85% 52%;
+    --primary-glow: 0 0% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 155 79% 8%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 41 45% 75%;        /* sand-400 */
-    --accent-foreground: 155 79% 8%;
+    --accent: 0 0% 15%;          /* Dark gray accent */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 172 85% 42%;         /* brand-500 emerald */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;             /* Black ring */
 
-    --radius: 0.75rem;
+    --radius: 0rem;
 
-    /* Executive Design Tokens */
+    /* Minimalist Design Tokens */
     --gradient-primary: linear-gradient(135deg, hsl(var(--brand-500)), hsl(var(--brand-700)));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--brand-500)), hsl(var(--brand-900)));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0%), hsl(0 0% 15%));
     
-    /* Executive shadows */
-    --shadow-executive: 0 1px 2px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
-    --shadow-card: 0 1px 2px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.06);
-    --shadow-glow: 0 0 40px hsl(var(--brand-500) / 0.2);
+    /* Minimalist shadows */
+    --shadow-executive: 0 1px 3px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.08);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.08);
+    --shadow-glow: 0 0 40px rgba(0,0,0,0.15);
     
-    /* Executive transitions */
-    --transition-executive: all 0.15s cubic-bezier(.2,.8,.2,1);
-    --transition-hover: all 0.22s cubic-bezier(.2,.8,.2,1);
+    /* Minimalist transitions */
+    --transition-executive: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-hover: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -74,41 +74,41 @@
   }
 
   .dark {
-    --background: 210 9% 9%;     /* slate-900 */
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;       /* Pure black background */
+    --foreground: 0 0% 100%;
 
-    --card: 210 9% 9%;           /* slate-900 */
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 210 9% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 172 85% 42%;      /* brand-500 emerald */
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;        /* White primary in dark mode */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 41 45% 75%;        /* sand-400 */
-    --accent-foreground: 155 79% 8%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 172 85% 42%;         /* brand-500 emerald */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 100%;
   }
 }
 
@@ -176,43 +176,41 @@
     }
   }
 
-  /* Executive Button System */
+  /* Minimalist Button System */
   .btn-primary {
     @apply bg-primary text-primary-foreground;
-    @apply px-6 py-3 rounded-xl font-medium;
+    @apply px-8 py-3 rounded-none font-medium;
     @apply focus:ring-2 focus:ring-offset-2 focus:ring-primary;
-    box-shadow: var(--shadow-card);
     transition: var(--transition-hover);
   }
 
   .btn-primary:hover {
-    background-color: hsl(var(--brand-700));
-    box-shadow: var(--shadow-glow);
+    background-color: hsl(0 0% 15%);
+    transform: translateY(-1px);
   }
 
   .btn-secondary {
-    @apply border text-primary hover:bg-primary/5 hover:border-primary;
-    @apply px-6 py-3 rounded-xl font-medium;
-    border-color: hsl(var(--primary) / 0.3);
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+    @apply px-8 py-3 rounded-none font-medium;
     transition: var(--transition-hover);
   }
 
   .btn-secondary:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
-  /* Executive Card System */
+  /* Minimalist Card System */
   .card-executive {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
-    border-radius: 1rem;
-    box-shadow: var(--shadow-executive);
+    border-radius: 0;
+    box-shadow: none;
     transition: var(--transition-hover);
   }
 
   .card-executive:hover {
+    border-color: hsl(var(--foreground));
     transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
   }
 
   /* Legacy card for compatibility */
