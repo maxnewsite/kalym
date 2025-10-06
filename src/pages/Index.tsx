@@ -70,7 +70,7 @@ const Index = () => {
         <footer className="bg-white py-20 border-t border-black">
           <div className="container mx-auto px-6 text-center">
             <div className="flex items-center justify-center space-x-4 mb-6">
-              <img src={kalymLogo} alt="KALYM Logo" className="h-12 w-auto" />
+              <img src={kalymLogo} alt="KALYM Logo" className="h-16 w-auto" />
             </div>
             <p className="text-gray-600 font-light text-lg mb-2">AI Orchestration Platform for the GCC Region</p>
             <p className="text-gray-500 text-sm font-light">Powered by elite data scientists and proven research</p>

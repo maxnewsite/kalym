@@ -32,8 +32,7 @@ const KalymHero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
-            Join the 12% who achieve AI success. KALYM delivers 15-20% operational improvements 
-            through elite data science and proven GCC market expertise.
+            If you need an AI Use Case or if you want to propose one, just let us know.
           </p>
 
           <div className="flex justify-center mb-16">
