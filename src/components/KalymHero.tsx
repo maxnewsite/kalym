@@ -36,7 +36,7 @@ const KalymHero = () => {
             through elite data science and proven GCC market expertise.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <div className="flex justify-center mb-16">
             <Button 
               size="lg" 
               className="btn-primary group text-lg px-8 py-6"
@@ -44,14 +44,6 @@ const KalymHero = () => {
             >
               Submit Your AI Use Case
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button 
-              variant="outline"
-              size="lg"
-              onClick={() => document.getElementById('platform')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-primary/20 text-primary hover:bg-primary/5 text-lg px-8 py-6"
-            >
-              Learn More
             </Button>
           </div>
         </div>
@@ -108,14 +100,6 @@ const KalymHero = () => {
             <p className="text-lg text-muted-foreground mb-6">
               Ready to turn your AI idea into GCC market reality?
             </p>
-            <Button 
-              onClick={scrollToContact}
-              variant="outline"
-              size="lg"
-              className="border-primary/20 text-primary hover:bg-primary/5"
-            >
-              Get Started Today
-            </Button>
           </div>
         </div>
       </div>

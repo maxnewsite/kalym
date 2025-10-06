@@ -42,47 +42,11 @@ const Team = () => {
       image: null,
       initials: "LR",
       icon: Brain
-    },
-    {
-      name: "Hassan Al-Mahmoud",
-      position: "Director of Engineering",
-      company: "CloudTech Systems",
-      location: "Bahrain",
-      image: null,
-      initials: "HM",
-      icon: Cog
-    },
-    {
-      name: "Fatima Al-Zahra",
-      position: "Chief Strategy Officer",
-      company: "Strategic Ventures",
-      location: "Oman",
-      image: null,
-      initials: "FZ",
-      icon: Target
-    },
-    {
-      name: "Ahmed Mansouri",
-      position: "VP of Business Development",
-      company: "GrowthPartners",
-      location: "United Arab Emirates",
-      image: null,
-      initials: "AM",
-      icon: TrendingUp
-    },
-    {
-      name: "Nadia Al-Rashid",
-      position: "Head of Operations",
-      company: "OptiFlow Solutions",
-      location: "Saudi Arabia",
-      image: null,
-      initials: "NR",
-      icon: Lightbulb
     }
   ];
 
   return (
-    <div className="py-32 px-6" style={{ backgroundColor: '#D4BC8E' }}>
+    <div className="py-32 px-6 bg-white">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-20">
           <div className="inline-block bg-brand-500 text-white px-12 py-6 rounded-full text-3xl font-bold mb-12">

@@ -37,7 +37,7 @@ const KalymHome = () => {
             Make AI deliver, not just demo
           </h2>
           <p className="text-2xl text-foreground max-w-5xl mx-auto font-light leading-relaxed mb-12">
-            We are the GCC's most connected AI agency, linking enterprises with vetted, proven AI solution providers and orchestrating full end-to-end deployments. Our projects consistently unlock 15–20% efficiency and performance gains across operations.
+            Join the 5% who achieve AI success. KALYM delivers measurable operational improvements through elite data science and proven GCC market expertise.
           </p>
           
 

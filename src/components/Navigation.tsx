@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import kalymLogo from '@/assets/kalym-logo.png';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -49,12 +50,7 @@ const Navigation = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-18">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <div className="w-4 h-4 bg-white rounded-full"></div>
-            </div>
-            <span className="text-2xl font-light text-primary tracking-tight">
-              KALYM.me
-            </span>
+            <img src={kalymLogo} alt="KALYM Logo" className="h-12 w-auto" />
           </Link>
           
           <div className="hidden lg:flex items-center">
@@ -120,26 +116,6 @@ const Navigation = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-muted-foreground hover:text-foreground font-light">
-                    Platform
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="grid gap-3 p-6 w-80">
-                      <NavigationMenuLink asChild>
-                        <button 
-                          onClick={() => scrollToSection('platform')}
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-left"
-                        >
-                          <div className="text-sm font-medium leading-none">Platform Overview</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            AI orchestration capabilities
-                          </p>
-                        </button>
-                      </NavigationMenuLink>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
 
                 <NavigationMenuItem>
                   <Link to="/blog" className="text-muted-foreground hover:text-foreground transition-colors font-light px-4 py-2">
@@ -233,22 +209,6 @@ const Navigation = () => {
                     </CollapsibleContent>
                   </Collapsible>
 
-                  {/* Platform Section */}
-                  <Collapsible open={platformOpen} onOpenChange={setPlatformOpen}>
-                    <CollapsibleTrigger className="flex items-center justify-between px-6 py-4 text-base font-light text-foreground hover:bg-accent transition-colors w-full text-left">
-                      Platform
-                      <ChevronDown className={`h-4 w-4 transition-transform ${platformOpen ? 'rotate-180' : ''}`} />
-                    </CollapsibleTrigger>
-                    <CollapsibleContent className="bg-muted/30">
-                      <button 
-                        onClick={() => scrollToSection('platform')}
-                        className="block w-full px-8 py-3 text-left text-sm hover:bg-accent transition-colors"
-                      >
-                        <div className="font-medium">Platform Overview</div>
-                        <p className="text-xs text-muted-foreground mt-1">AI orchestration capabilities</p>
-                      </button>
-                    </CollapsibleContent>
-                  </Collapsible>
 
                   {/* Blog */}
                   <Link 
