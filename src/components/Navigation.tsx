@@ -50,7 +50,7 @@ const Navigation = () => {
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-18">
           <Link to="/" className="flex items-center space-x-3">
-            <img src={kalymLogo} alt="KALYM Logo" className="h-16 w-auto" />
+            <img src={kalymLogo} alt="KALYM Logo" className="h-32 w-auto" />
           </Link>
           
           <div className="hidden lg:flex items-center">
